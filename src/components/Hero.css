@@ -1,0 +1,93 @@
+.hero {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding: 7rem clamp(1.5rem, 5vw, 4rem) 5rem;
+  background: var(--dark);
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+.hero--visible { opacity: 1; }
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: clamp(3rem, 5vw, 6rem);
+  align-items: center;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  width: 100%;
+}
+.hero__eyebrow {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--yellow);
+  margin-bottom: 1rem;
+}
+.hero__name {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 2rem + 4vw, 5.5rem);
+  font-weight: 900;
+  line-height: 1.05;
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+.hero__name em {
+  font-style: italic;
+  color: var(--yellow);
+}
+.hero__bio {
+  font-size: clamp(0.9rem, 0.85rem + 0.3vw, 1.05rem);
+  color: var(--text-muted);
+  max-width: 54ch;
+  line-height: 1.75;
+  margin-bottom: 2.5rem;
+}
+.hero__ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+.hero__cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.75rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  transition: transform var(--duration-fast), opacity var(--duration-fast);
+}
+.hero__cta:hover { transform: translateY(-2px); opacity: 0.9; }
+.hero__cta--primary { background: var(--yellow); color: #0e0e14; }
+.hero__cta--ghost { border: 1px solid var(--border); color: var(--text); }
+.hero__cta--ghost:hover { border-color: var(--yellow); color: var(--yellow); }
+.hero__photo-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+.hero__photo {
+  width: clamp(240px, 28vw, 380px);
+  height: auto;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  object-position: 50% 15%;
+  border-radius: 4px;
+  filter: grayscale(0.15);
+  position: relative;
+  z-index: 1;
+}
+.hero__photo-accent {
+  position: absolute;
+  inset: 12px -12px -12px 12px;
+  border: 2px solid var(--yellow);
+  border-radius: 4px;
+  z-index: 0;
+}
+@media (max-width: 768px) {
+  .hero__inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .hero__bio { margin: 0 auto 2.5rem; }
+  .hero__ctas { justify-content: center; }
+  .hero__photo-wrap { margin: 0 auto; }
+}
