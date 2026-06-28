@@ -1,6 +1,5 @@
-import { useState } from 'react'
 import { useReveal } from '../hooks/useReveal'
-import { slides, liPosts } from '../data/projects'
+import { liPosts } from '../data/projects'
 import './MarketingWork.css'
 
 function LinkedInIcon() {
@@ -13,45 +12,12 @@ function LinkedInIcon() {
 
 export default function MarketingWork() {
   const ref = useReveal()
-  const [active, setActive] = useState(0)
 
   return (
     <section id="marketing" className="mkt">
       <div className="section-wrap reveal" ref={ref}>
-        <p className="section-label">Marketing Portfolio</p>
+        <p className="section-label">Thought Leadership</p>
         <h2 className="section-heading">Marketing Work</h2>
-
-        <div className="mkt__slides">
-          <div className="mkt__gallery">
-            {slides.map((src, i) => (
-              <div
-                key={src}
-                className={`mkt__slide${i === active ? ' mkt__slide--active' : ''}`}
-              >
-                <img src={src} alt={`Marketing case study slide ${i + 1}`} loading={i === 0 ? 'eager' : 'lazy'} />
-              </div>
-            ))}
-          </div>
-          <div className="mkt__dots" role="tablist" aria-label="Slide navigation">
-            {slides.map((_, i) => (
-              <button
-                key={i}
-                role="tab"
-                aria-selected={i === active}
-                aria-label={`Slide ${i + 1}`}
-                className={`mkt__dot${i === active ? ' mkt__dot--active' : ''}`}
-                onClick={() => setActive(i)}
-              />
-            ))}
-          </div>
-          <div className="mkt__arrows">
-            <button onClick={() => setActive(i => (i - 1 + slides.length) % slides.length)} aria-label="Previous">&#8592;</button>
-            <button onClick={() => setActive(i => (i + 1) % slides.length)} aria-label="Next">&#8594;</button>
-          </div>
-        </div>
-
-        <p className="section-label" style={{ marginTop: '4rem' }}>Thought Leadership</p>
-        <h3 className="mkt__sub-heading">LinkedIn Insights</h3>
         <div className="mkt__li-grid">
           {liPosts.map((post, i) => (
             <article key={i} className="mkt__li-card">
