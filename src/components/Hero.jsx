@@ -2,6 +2,13 @@ import { useRef } from 'react'
 import { gsap, SplitText, useGSAP } from '../lib/gsap'
 import './Hero.css'
 
+const META_ITEMS = [
+  '— JAY SAHASTRABUDHE',
+  'PERFORMANCE MARKETER',
+  'PUNE, IN',
+  '5+ YRS · 15M+ VIEWS · 8+ BRANDS',
+]
+
 export default function Hero() {
   const sectionRef = useRef(null)
   const primaryCtaRef = useRef(null)
@@ -10,10 +17,10 @@ export default function Hero() {
     const section = sectionRef.current
     const eyebrow = section.querySelector('.hero__eyebrow')
     const heading = section.querySelector('.hero__heading')
-    const byline = section.querySelector('.hero__byline')
     const bio = section.querySelector('.hero__bio')
     const ctas = section.querySelectorAll('.hero__cta')
-    const photo = section.querySelector('.hero__photo-wrap')
+    const figure = section.querySelector('.hero__figure')
+    const metaItems = section.querySelectorAll('.hero__meta li')
     const primaryCta = primaryCtaRef.current
 
     const mm = gsap.matchMedia()
@@ -41,7 +48,7 @@ export default function Hero() {
       })
 
       tl.from(
-        [byline, bio],
+        bio,
         { autoAlpha: 0, y: 24, duration: 0.7, ease: 'power3.out' },
         '-=0.45'
       )
@@ -51,10 +58,15 @@ export default function Hero() {
         '-=0.4'
       )
       tl.fromTo(
-        photo,
+        figure,
         { clipPath: 'inset(100% 0 0 0)', autoAlpha: 0 },
         { clipPath: 'inset(0% 0 0 0)', autoAlpha: 1, duration: 0.9 },
         0.35
+      )
+      tl.from(
+        metaItems,
+        { autoAlpha: 0, y: 12, duration: 0.5, stagger: 0.05, ease: 'power3.out' },
+        '-=0.5'
       )
 
       return () => split && split.revert()
@@ -100,43 +112,48 @@ export default function Hero() {
 
   return (
     <section className="hero" ref={sectionRef} aria-labelledby="hero-heading">
-      <p className="hero__eyebrow">
-        PERFORMANCE MARKETING — META / GOOGLE / AI / EDTECH
-      </p>
-      <h1 id="hero-heading" className="hero__heading">
-        Marketing that has to <em className="hero__wonk">answer</em> for the money.
-      </h1>
-      <p className="hero__byline">
-        — JAY SAHASTRABUDHE · 5+ YRS · 15M+ VIEWS · 8+ BRANDS
-      </p>
-      <p className="hero__bio">
-        I'm a performance marketer who cares about one question: did the spend turn
-        into revenue? Paid acquisition on Meta, Google, LinkedIn and YouTube — plus the
-        AI-powered web apps and automation engines that make it accountable.
-      </p>
-      <div className="hero__ctas">
-        <a href="#contact" ref={primaryCtaRef} className="hero__cta hero__cta--primary">
-          Get in touch
-        </a>
-        <a
-          href="https://linkedin.com/in/jaysahastrabudhe"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hero__cta hero__cta--ghost"
-        >
-          LinkedIn
-        </a>
+      <div className="hero__stage">
+        <figure className="hero__figure">
+          <img
+            src="/jay-hero.jpg"
+            alt="Jay Sahastrabudhe"
+            className="hero__photo"
+            width="520"
+            height="650"
+            fetchPriority="high"
+          />
+          <figcaption className="hero__figcaption">FIG. 01 — THE OPERATOR</figcaption>
+        </figure>
+        <p className="hero__eyebrow">
+          PERFORMANCE MARKETING — META / GOOGLE / AI / EDTECH
+        </p>
+        <h1 id="hero-heading" className="hero__heading">
+          Marketing that has to <em className="hero__wonk">answer</em> for the money.
+        </h1>
+        <p className="hero__bio">
+          I'm a performance marketer who cares about one question: did the spend turn
+          into revenue? Paid acquisition on Meta, Google, LinkedIn and YouTube — plus the
+          AI-powered web apps and automation engines that make it accountable.
+        </p>
+        <div className="hero__ctas">
+          <a href="#contact" ref={primaryCtaRef} className="hero__cta hero__cta--primary">
+            Get in touch
+          </a>
+          <a
+            href="https://linkedin.com/in/jaysahastrabudhe"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hero__cta hero__cta--ghost"
+          >
+            LinkedIn
+          </a>
+        </div>
       </div>
-      <div className="hero__photo-wrap">
-        <img
-          src="/jay-hero.jpg"
-          alt="Jay Sahastrabudhe"
-          className="hero__photo"
-          width="280"
-          height="350"
-          fetchPriority="high"
-        />
-      </div>
+      <ul className="hero__meta">
+        {META_ITEMS.map(item => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
     </section>
   )
 }
