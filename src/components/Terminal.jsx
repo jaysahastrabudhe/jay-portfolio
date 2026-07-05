@@ -1,5 +1,5 @@
-import { useRef } from 'react'
-import { gsap, ScrollTrigger, useGSAP } from '../lib/gsap'
+import { animate, stagger, scrambleText, enterOnce } from '../lib/anime'
+import { useAnimeScope } from '../lib/useAnimeScope'
 import { webProjects, githubProjects } from '../data/projects'
 import './Terminal.css'
 
@@ -12,96 +12,62 @@ function GitHubIcon() {
 }
 
 export default function Terminal() {
-  const ref = useRef(null)
+  const ref = useAnimeScope(self => {
+    const root = self.root
+    const eyebrow = root.querySelector('.terminal__eyebrow')
+    const heading = root.querySelector('.terminal__heading')
+    const screenshotTiles = root.querySelectorAll('.terminal__screenshot-tile')
+    const repoTiles = root.querySelectorAll('.terminal__repo-tile')
+    const repoGrid = root.querySelector('.terminal__repo-grid')
+    const repoNames = root.querySelectorAll('.terminal__repo-name')
 
-  useGSAP(() => {
-    const eyebrow = ref.current.querySelector('.terminal__eyebrow')
-    const heading = ref.current.querySelector('.terminal__heading')
-    const screenshotTiles = gsap.utils.toArray('.terminal__screenshot-tile', ref.current)
-    const repoTiles = gsap.utils.toArray('.terminal__repo-tile', ref.current)
-    const repoGrid = ref.current.querySelector('.terminal__repo-grid')
-    const repoNames = gsap.utils.toArray('.terminal__repo-name', ref.current)
-
-    const mm = gsap.matchMedia()
-
-    mm.add('(prefers-reduced-motion: no-preference)', () => {
-      gsap.set([eyebrow, heading], { autoAlpha: 0, y: 24 })
-      gsap.set([...screenshotTiles, ...repoTiles], { autoAlpha: 0, y: 36 })
-
-      gsap.to([eyebrow, heading], {
-        autoAlpha: 1,
-        y: 0,
-        duration: 0.7,
-        ease: 'power3.out',
-        stagger: 0.1,
-        scrollTrigger: {
-          trigger: ref.current,
-          start: 'top 80%',
-          once: true,
-        },
+    if (self.matches.reduce) {
+      animate([eyebrow, heading, ...screenshotTiles, ...repoTiles], {
+        opacity: [0, 1],
+        duration: 300,
+        ease: 'linear',
+        autoplay: enterOnce(root, 15),
       })
+      return
+    }
 
-      gsap.to(screenshotTiles, {
-        autoAlpha: 1,
-        y: 0,
-        duration: 0.65,
-        ease: 'power3.out',
-        stagger: 0.1,
-        scrollTrigger: {
-          trigger: ref.current,
-          start: 'top 80%',
-          once: true,
-        },
-      })
-
-      gsap.to(repoTiles, {
-        autoAlpha: 1,
-        y: 0,
-        duration: 0.65,
-        ease: 'power3.out',
-        stagger: 0.1,
-        scrollTrigger: {
-          trigger: repoGrid || ref.current,
-          start: 'top 80%',
-          once: true,
-        },
-      })
-
-      if (repoNames.length > 0) {
-        ScrollTrigger.create({
-          trigger: repoGrid || ref.current,
-          start: 'top 80%',
-          once: true,
-          onEnter: () => {
-            repoNames.forEach(nameEl => {
-              const finalName = nameEl.textContent
-              gsap.to(nameEl, {
-                scrambleText: { text: finalName, chars: 'upperCase', speed: 0.4 },
-                duration: 0.6,
-              })
-            })
-          },
-        })
-      }
-
-      return () => {}
+    animate([eyebrow, heading], {
+      opacity: [0, 1],
+      translateY: [24, 0],
+      duration: 700,
+      ease: 'outCubic',
+      delay: stagger(100),
+      autoplay: enterOnce(root, 20),
     })
 
-    mm.add('(prefers-reduced-motion: reduce)', () => {
-      gsap.set([eyebrow, heading, ...screenshotTiles, ...repoTiles], { autoAlpha: 1, y: 0 })
-
-      gsap.from(ref.current, {
-        autoAlpha: 0,
-        duration: 0.3,
-        ease: 'none',
-        scrollTrigger: { trigger: ref.current, start: 'top 85%', once: true },
-      })
-
-      return () => {}
+    animate(screenshotTiles, {
+      opacity: [0, 1],
+      translateY: [36, 0],
+      duration: 650,
+      ease: 'outCubic',
+      delay: stagger(100),
+      autoplay: enterOnce(root, 20),
     })
 
-    return () => mm.revert()
-  }, { scope: ref })
+    animate(repoTiles, {
+      opacity: [0, 1],
+      translateY: [36, 0],
+      duration: 650,
+      ease: 'outCubic',
+      delay: stagger(100),
+      autoplay: enterOnce(repoGrid || root, 20),
+    })
+
+    if (repoNames.length > 0) {
+      animate(repoNames, {
+        textContent: scrambleText({ chars: 'uppercase' }),
+        duration: 600,
+        ease: 'outQuad',
+        delay: stagger(80),
+        autoplay: enterOnce(repoGrid || root, 20),
+      })
+    }
+  })
 
   return (
     <section id="terminal" className="terminal" ref={ref}>

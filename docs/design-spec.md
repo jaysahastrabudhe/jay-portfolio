@@ -214,6 +214,8 @@ const stats = [
 
 ## 5. GSAP Architecture
 
+> **Engine note (2026-07-05):** the site now runs on **anime.js v4** (`src/lib/anime.js`, `src/lib/useAnimeScope.js`). The choreography values, ease tiers, single-scrub budget, and reduced-motion contract below are unchanged — read GSAP API names as their anime.js equivalents (SplitText → `split` with `wrap: 'clip'`, ScrollTrigger → `onScroll`, `useGSAP`/matchMedia → `createScope` with `mediaQueries`, ScrambleText → `scrambleText`, durations in ms).
+
 **Install:** `npm install gsap @gsap/react` (GSAP 3.13+ — SplitText, ScrollTrigger, ScrollToPlugin all free).
 
 **Single registration point — `src/lib/gsap.js`:**

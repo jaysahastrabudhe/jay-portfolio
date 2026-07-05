@@ -1,56 +1,45 @@
-import { useRef } from 'react'
-import { gsap, useGSAP } from '../lib/gsap'
+import { animate, stagger, enterOnce } from '../lib/anime'
+import { useAnimeScope } from '../lib/useAnimeScope'
 import { sectionHeaderReveal } from '../lib/sectionReveal'
 import { skillGroups } from '../data/skills'
 import './Skills.css'
 
 export default function Skills() {
-  const sectionRef = useRef(null)
+  const rootRef = useAnimeScope(self => {
+    const reduce = self.matches.reduce
+    const root = self.root
+    const gridEl = root.querySelector('.sk__grid')
+    const tiles = root.querySelectorAll('.sk__tile')
 
-  useGSAP(
-    () => {
-      sectionHeaderReveal(sectionRef.current)
-
-      const tiles = gsap.utils.toArray('.sk__tile', sectionRef.current)
-      if (tiles.length === 0) return
-
-      const mm = gsap.matchMedia()
-
-      mm.add('(prefers-reduced-motion: no-preference)', () => {
-        gsap.set(tiles, { autoAlpha: 0, y: 20 })
-
-        gsap.to(tiles, {
-          autoAlpha: 1,
-          y: 0,
-          duration: 0.5,
-          ease: 'power3.out',
-          stagger: { each: 0.04, from: 'start' },
-          scrollTrigger: {
-            trigger: '.sk__grid',
-            start: 'top 80%',
-            once: true,
-            toggleActions: 'play none none none',
-          },
+    if (reduce) {
+      sectionHeaderReveal(root, { reduce: true })
+      if (tiles.length > 0) {
+        animate(tiles, {
+          opacity: [0, 1],
+          duration: 300,
+          ease: 'linear',
+          autoplay: enterOnce(root, 15),
         })
-      })
+      }
+      return
+    }
 
-      mm.add('(prefers-reduced-motion: reduce)', () => {
-        gsap.set(tiles, { autoAlpha: 1, y: 0 })
-        gsap.from(tiles, {
-          autoAlpha: 0,
-          duration: 0.3,
-          ease: 'none',
-          scrollTrigger: { trigger: '.sk__grid', start: 'top 85%', once: true },
-        })
-      })
+    sectionHeaderReveal(root, { reduce })
 
-      return () => mm.revert()
-    },
-    { scope: sectionRef }
-  )
+    if (tiles.length === 0) return
+
+    animate(tiles, {
+      opacity: [0, 1],
+      translateY: [20, 0],
+      duration: 500,
+      ease: 'outCubic',
+      delay: stagger(40),
+      autoplay: enterOnce(gridEl, 20),
+    })
+  })
 
   return (
-    <section id="skills" className="section-wrap" ref={sectionRef}>
+    <section id="skills" className="section-wrap" ref={rootRef}>
       <p className="eyebrow">05 / CAPABILITIES</p>
       <h2 className="section-heading">Capabilities</h2>
       <div className="sk__grid">

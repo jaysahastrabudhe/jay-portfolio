@@ -1,56 +1,45 @@
-import { useRef } from 'react'
-import { gsap, ScrollTrigger, useGSAP } from '../lib/gsap'
+import { animate, enterOnce } from '../lib/anime'
+import { useAnimeScope } from '../lib/useAnimeScope'
 import { sectionHeaderReveal } from '../lib/sectionReveal'
 import { education } from '../data/experience'
 import './Education.css'
 
 export default function Education() {
-  const ref = useRef(null)
+  const rootRef = useAnimeScope(self => {
+    const root = rootRef.current
+    const reduce = self.matches.reduce
+    const rows = root.querySelectorAll('.edu__row')
 
-  useGSAP(() => {
-    sectionHeaderReveal(ref.current)
+    if (reduce) {
+      sectionHeaderReveal(root, { reduce: true })
+      if (rows.length > 0) {
+        animate(rows, {
+          opacity: [0, 1],
+          duration: 300,
+          ease: 'linear',
+          autoplay: enterOnce(root, 15),
+        })
+      }
+      return
+    }
 
-    const rows = gsap.utils.toArray('.edu__row', ref.current)
+    sectionHeaderReveal(root, { reduce })
+
     if (rows.length === 0) return
 
-    const mm = gsap.matchMedia()
+    const rowsContainer = root.querySelector('.edu__ledger')
 
-    mm.add('(prefers-reduced-motion: no-preference)', () => {
-      gsap.set(rows, { autoAlpha: 0, y: 28 })
-
-      gsap.to(rows, {
-        autoAlpha: 1,
-        y: 0,
-        duration: 0.6,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: ref.current,
-          start: 'top 80%',
-          once: true,
-        },
-      })
-
-      return () => {}
+    animate(rows, {
+      opacity: [0, 1],
+      translateY: [28, 0],
+      duration: 600,
+      ease: 'outCubic',
+      autoplay: enterOnce(rowsContainer, 20),
     })
-
-    mm.add('(prefers-reduced-motion: reduce)', () => {
-      gsap.set(rows, { autoAlpha: 1, y: 0 })
-
-      gsap.from(rows, {
-        autoAlpha: 0,
-        duration: 0.3,
-        ease: 'none',
-        scrollTrigger: { trigger: ref.current, start: 'top 85%', once: true },
-      })
-
-      return () => {}
-    })
-
-    return () => mm.revert()
-  }, { scope: ref })
+  })
 
   return (
-    <section id="education" className="section-wrap" ref={ref}>
+    <section id="education" className="section-wrap" ref={rootRef}>
       <p className="eyebrow">06 / EDUCATION</p>
       <h2 className="section-heading">Education</h2>
       <div className="edu__ledger">

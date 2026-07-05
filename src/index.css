@@ -99,7 +99,7 @@
   --radius-paper:    0;
   --radius-terminal: 12px;
 
-  /* Motion (CSS hovers; GSAP eases live in src/lib/gsap.js) */
+  /* Motion (CSS hovers; JS eases live in src/lib/anime.js) */
   --duration-micro:  250ms;
   --duration-img:    350ms;
   --ease-out-expo:   cubic-bezier(0.16, 1, 0.3, 1);
@@ -164,7 +164,7 @@ img { display: block; max-width: 100%; }
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* ---------- Reduced motion (belt & suspenders — GSAP handles the rest) ---------- */
+/* ---------- Reduced motion (belt & suspenders — anime.js scopes handle the rest) ---------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {

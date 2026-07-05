@@ -1,67 +1,50 @@
-import { gsap, SplitText } from './gsap'
+import { animate, split, stagger, enterOnce, MOTION } from './anime'
 
 /**
- * Shared section-header choreography: eyebrow fades in, then the
- * heading's lines rise out of a SplitText line mask. Fires once.
+ * Shared section-header choreography (anime.js v4): eyebrow fades in,
+ * heading lines rise out of clipped line wrappers. Fires once on enter.
  *
- * Call inside a component's useGSAP(() => { ... }, { scope: ref }) so the
- * created matchMedia/ScrollTrigger instances are cleaned up automatically.
+ * Call inside a useAnimeScope constructor so the splitter, animations and
+ * scroll observers register to the scope and revert on unmount.
  *
  * @param {HTMLElement} scopeEl - section root containing `.eyebrow` and `.section-heading`
+ * @param {{ reduce?: boolean }} opts - pass self.matches.reduce from the scope
  */
-export function sectionHeaderReveal(scopeEl) {
+export function sectionHeaderReveal(scopeEl, { reduce = false } = {}) {
   const eyebrow = scopeEl.querySelector('.eyebrow')
   const heading = scopeEl.querySelector('.section-heading')
   if (!heading) return
 
-  const mm = gsap.matchMedia()
-
-  mm.add('(prefers-reduced-motion: no-preference)', () => {
-    const split = SplitText.create(heading, {
-      type: 'lines',
-      mask: 'lines',
-      autoSplit: true,
-      onSplit(self) {
-        return gsap.from(self.lines, {
-          yPercent: 110,
-          duration: 0.85,
-          stagger: 0.08,
-          ease: 'expo.out',
-          scrollTrigger: {
-            trigger: scopeEl,
-            start: 'top 75%',
-            toggleActions: 'play none none none',
-            once: true,
-          },
-        })
-      },
+  if (reduce) {
+    animate([eyebrow, heading].filter(Boolean), {
+      opacity: [0, 1],
+      duration: 300,
+      ease: 'linear',
+      autoplay: enterOnce(scopeEl, 15),
     })
+    return
+  }
 
-    if (eyebrow) {
-      gsap.from(eyebrow, {
-        autoAlpha: 0,
-        y: 12,
-        duration: 0.45,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: scopeEl,
-          start: 'top 75%',
-          toggleActions: 'play none none none',
-          once: true,
-        },
-      })
-    }
-
-    return () => split.revert()
-  })
-
-  mm.add('(prefers-reduced-motion: reduce)', () => {
-    // Single quiet fade — elements are otherwise in final position.
-    gsap.from([eyebrow, heading].filter(Boolean), {
-      autoAlpha: 0,
-      duration: 0.3,
-      ease: 'none',
-      scrollTrigger: { trigger: scopeEl, start: 'top 85%', once: true },
+  // Clipped line wrappers = the SplitText mask equivalent. addEffect
+  // re-applies the animation whenever the splitter re-splits on resize.
+  const splitter = split(heading, { lines: { wrap: 'clip' } })
+  splitter.addEffect(({ lines }) =>
+    animate(lines, {
+      translateY: ['110%', '0%'],
+      duration: MOTION.display.duration,
+      ease: MOTION.display.ease,
+      delay: stagger(80),
+      autoplay: enterOnce(scopeEl, 25),
     })
-  })
+  )
+
+  if (eyebrow) {
+    animate(eyebrow, {
+      opacity: [0, 1],
+      translateY: [12, 0],
+      duration: 450,
+      ease: 'outCubic',
+      autoplay: enterOnce(scopeEl, 25),
+    })
+  }
 }

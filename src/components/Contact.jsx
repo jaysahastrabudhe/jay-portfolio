@@ -1,89 +1,69 @@
 import { useRef } from 'react'
-import { gsap, SplitText, useGSAP } from '../lib/gsap'
+import { animate, split, stagger, enterOnce, MOTION } from '../lib/anime'
+import { useAnimeScope } from '../lib/useAnimeScope'
 import './Contact.css'
 
 export default function Contact() {
-  const sectionRef = useRef(null)
   const emailRef = useRef(null)
 
-  const { contextSafe } = useGSAP(() => {
-    const section = sectionRef.current
+  const sectionRef = useAnimeScope(self => {
+    const section = self.root
     const mega = section.querySelector('.contact__mega')
     const email = emailRef.current
     const links = section.querySelectorAll('.contact__social')
+    const reduce = self.matches.reduce
 
-    const mm = gsap.matchMedia()
-
-    mm.add('(prefers-reduced-motion: no-preference)', () => {
-      gsap.set([email, links], { autoAlpha: 0 })
-
-      let split
-      split = SplitText.create(mega, {
-        type: 'lines',
-        mask: 'lines',
-        autoSplit: true,
-        onSplit(self) {
-          return gsap.from(self.lines, {
-            yPercent: 110,
-            duration: 0.85,
-            stagger: 0.08,
-            ease: 'expo.out',
-            scrollTrigger: {
-              trigger: section,
-              start: 'top 75%',
-              once: true,
-            },
-          })
-        },
+    if (reduce) {
+      animate(section.children, {
+        opacity: [0, 1],
+        duration: 300,
+        ease: 'linear',
+        autoplay: enterOnce(section, 15),
       })
+      return
+    }
 
-      gsap.to([email, links], {
-        autoAlpha: 1,
-        y: 0,
-        duration: 0.6,
-        stagger: 0.06,
-        ease: 'power3.out',
-        delay: 0.3,
-        scrollTrigger: {
-          trigger: section,
-          start: 'top 75%',
-          once: true,
-        },
-      })
-
-      return () => split && split.revert()
+    const { lines } = split(mega, { lines: { wrap: 'clip' } })
+    animate(lines, {
+      translateY: ['110%', '0%'],
+      duration: MOTION.display.duration,
+      ease: MOTION.display.ease,
+      delay: stagger(80),
+      autoplay: enterOnce(section, 25),
     })
 
-    mm.add('(prefers-reduced-motion: reduce)', () => {
-      gsap.from(section.children, {
-        autoAlpha: 0,
-        duration: 0.3,
-        ease: 'none',
-        scrollTrigger: { trigger: section, start: 'top 85%', once: true },
-      })
+    animate([email, ...links], {
+      opacity: [0, 1],
+      translateY: [20, 0],
+      duration: 600,
+      ease: 'outCubic',
+      delay: stagger(60, { start: 300 }),
+      autoplay: enterOnce(section, 25),
     })
 
-    // Magnetic effect on the primary CTA (email link) only.
-    mm.add('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)', () => {
-      if (!email) return
-
+    if (self.matches.fine) {
       const strength = 0.35
 
-      const handleMouseMove = contextSafe(event => {
+      const handleMouseMove = event => {
         const rect = email.getBoundingClientRect()
         const relX = event.clientX - (rect.left + rect.width / 2)
         const relY = event.clientY - (rect.top + rect.height / 2)
-        gsap.to(email, {
-          x: relX * strength,
-          y: relY * strength,
-          duration: 0.3,
-          ease: 'power2.out',
+        animate(email, {
+          translateX: relX * strength,
+          translateY: relY * strength,
+          duration: 300,
+          ease: 'outQuad',
         })
-      })
+      }
 
-      const handleMouseLeave = contextSafe(() => {
-        gsap.to(email, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.3)' })
-      })
+      const handleMouseLeave = () => {
+        animate(email, {
+          translateX: 0,
+          translateY: 0,
+          duration: 500,
+          ease: MOTION.settle,
+        })
+      }
 
       email.addEventListener('mousemove', handleMouseMove)
       email.addEventListener('mouseleave', handleMouseLeave)
@@ -92,10 +72,8 @@ export default function Contact() {
         email.removeEventListener('mousemove', handleMouseMove)
         email.removeEventListener('mouseleave', handleMouseLeave)
       }
-    })
-
-    return () => mm.revert()
-  }, { scope: sectionRef })
+    }
+  })
 
   return (
     <section id="contact" className="contact" ref={sectionRef}>

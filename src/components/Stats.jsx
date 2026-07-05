@@ -1,5 +1,5 @@
-import { useRef } from 'react'
-import { gsap, useGSAP } from '../lib/gsap'
+import { animate, enterOnce, stagger, utils } from '../lib/anime'
+import { useAnimeScope } from '../lib/useAnimeScope'
 import './Stats.css'
 
 const stats = [
@@ -20,74 +20,56 @@ function formatValue(stat) {
 }
 
 export default function Stats() {
-  const sectionRef = useRef(null)
+  const rootRef = useAnimeScope(self => {
+    const sectionEl = self.root
+    const reduce = self.matches.reduce
 
-  useGSAP(
-    () => {
-      const mm = gsap.matchMedia()
-
-      mm.add('(prefers-reduced-motion: no-preference)', () => {
-        const rules = gsap.utils.toArray('.stats__rule')
-        gsap.set(rules, { scaleX: 0, transformOrigin: 'left center' })
-
-        const numberEls = gsap.utils.toArray('.stats__number')
-        numberEls.forEach(el => {
-          el.textContent = '0'
-        })
-
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 70%',
-            once: true,
-            toggleActions: 'play none none none',
-          },
-        })
-
-        tl.to(rules, {
-          scaleX: 1,
-          duration: 0.6,
-          ease: 'power3.out',
-          stagger: 0.1,
-        }, 0)
-
-        stats.forEach((stat, i) => {
-          const el = numberEls[i]
-          if (!el) return
-          const proxy = { val: 0 }
-          tl.to(
-            proxy,
-            {
-              val: stat.value,
-              duration: 1.6 + i * 0.12,
-              delay: i * 0.08,
-              ease: 'power2.out',
-              snap: { val: stat.value >= 100 ? 10 : 1 },
-              onUpdate() {
-                el.textContent = stat.format
-                  ? stat.format(proxy.val)
-                  : Math.round(proxy.val).toLocaleString('en-IN')
-              },
-            },
-            0
-          )
-        })
-
-        return () => tl.kill()
+    if (reduce) {
+      animate(sectionEl, {
+        opacity: [0, 1],
+        duration: 300,
+        ease: 'linear',
+        autoplay: enterOnce(sectionEl, 15),
       })
+      return
+    }
 
-      mm.add('(prefers-reduced-motion: reduce)', () => {
-        gsap.set(sectionRef.current, { autoAlpha: 0 })
-        gsap.to(sectionRef.current, { autoAlpha: 1, duration: 0.3, ease: 'none' })
+    const ruleEls = Array.from(sectionEl.querySelectorAll('.stats__rule'))
+    const numberEls = Array.from(sectionEl.querySelectorAll('.stats__number'))
+
+    animate(ruleEls, {
+      scaleX: [0, 1],
+      duration: 600,
+      ease: 'outCubic',
+      delay: stagger(100),
+      autoplay: enterOnce(sectionEl, 30),
+    })
+
+    stats.forEach((stat, i) => {
+      const numberEl = numberEls[i]
+      if (!numberEl) return
+
+      numberEl.textContent = '0'
+
+      const modifier = stat.format
+        ? v => stat.format(v)
+        : stat.value >= 100
+          ? utils.snap(10)
+          : utils.round(0)
+
+      animate(numberEl, {
+        textContent: [0, stat.value],
+        duration: 1600 + i * 120,
+        delay: i * 80,
+        ease: 'outQuad',
+        modifier,
+        autoplay: enterOnce(sectionEl, 30),
       })
-
-      return () => mm.revert()
-    },
-    { scope: sectionRef }
-  )
+    })
+  })
 
   return (
-    <section id="ledger" className="stats" ref={sectionRef} aria-label="Key stats">
+    <section id="ledger" className="stats" ref={rootRef} aria-label="Key stats">
       <div className="stats__inner">
         <p className="eyebrow stats__eyebrow">01 / LEDGER</p>
         <div className="stats__rows">

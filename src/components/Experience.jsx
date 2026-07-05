@@ -1,92 +1,68 @@
-import { useRef } from 'react'
-import { gsap, ScrollTrigger, useGSAP } from '../lib/gsap'
+import { useAnimeScope } from '../lib/useAnimeScope'
+import { animate, onScroll, stagger, enterOnce } from '../lib/anime'
 import { sectionHeaderReveal } from '../lib/sectionReveal'
 import { experience } from '../data/experience'
 import './Experience.css'
 
 export default function Experience() {
-  const ref = useRef(null)
+  const rootRef = useAnimeScope(self => {
+    const reduce = self.matches.reduce
+    const root = rootRef.current
 
-  useGSAP(() => {
-    sectionHeaderReveal(ref.current)
+    sectionHeaderReveal(root, { reduce })
 
-    const entriesEl = ref.current.querySelector('.exp__entries')
-    const entries = gsap.utils.toArray('.exp__entry', ref.current)
-    const spineFill = ref.current.querySelector('.exp__spine-fill')
-    if (!entriesEl || entries.length === 0) return
+    const entriesContainer = root.querySelector('.exp__entries')
+    const entries = root.querySelectorAll('.exp__entry')
+    const spineFill = root.querySelector('.exp__spine-fill')
+    if (!entriesContainer || entries.length === 0) return
 
-    const mm = gsap.matchMedia()
-
-    mm.add('(prefers-reduced-motion: no-preference)', () => {
-      gsap.set(entries, { autoAlpha: 0, y: 36 })
-      if (spineFill) gsap.set(spineFill, { scaleY: 0, transformOrigin: 'top center' })
-
-      gsap.to(entries, {
-        autoAlpha: 1,
-        y: 0,
-        duration: 0.65,
-        ease: 'power3.out',
-        stagger: 0.1,
-        scrollTrigger: {
-          trigger: entriesEl,
-          start: 'top 80%',
-          once: true,
-        },
+    entries.forEach(entry => {
+      onScroll({
+        target: entry,
+        enter: { target: 'top', container: 'center' },
+        leave: { target: 'bottom', container: 'center' },
+        repeat: true,
+        onEnter: () => entry.classList.add('is-active'),
+        onLeave: () => entry.classList.remove('is-active'),
       })
-
-      if (spineFill) {
-        gsap.to(spineFill, {
-          scaleY: 1,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: entriesEl,
-            start: 'top 75%',
-            end: 'bottom 60%',
-            scrub: 0.6,
-          },
-        })
-      }
-
-      entries.forEach(entry => {
-        ScrollTrigger.create({
-          trigger: entry,
-          start: 'top center',
-          end: 'bottom center',
-          onToggle: self => entry.classList.toggle('is-active', self.isActive),
-        })
-      })
-
-      return () => {}
     })
 
-    mm.add('(prefers-reduced-motion: reduce)', () => {
-      gsap.set(entries, { autoAlpha: 1, y: 0 })
-      if (spineFill) gsap.set(spineFill, { scaleY: 1 })
-
-      gsap.from(entriesEl, {
-        autoAlpha: 0,
-        duration: 0.3,
-        ease: 'none',
-        scrollTrigger: { trigger: entriesEl, start: 'top 85%', once: true },
+    if (reduce) {
+      animate(entriesContainer, {
+        opacity: [0, 1],
+        duration: 300,
+        ease: 'linear',
+        autoplay: enterOnce(root, 15),
       })
+      if (spineFill) spineFill.style.transform = 'scaleY(1)'
+      return
+    }
 
-      entries.forEach(entry => {
-        ScrollTrigger.create({
-          trigger: entry,
-          start: 'top center',
-          end: 'bottom center',
-          onToggle: self => entry.classList.toggle('is-active', self.isActive),
-        })
-      })
-
-      return () => {}
+    animate(entries, {
+      opacity: [0, 1],
+      translateY: [36, 0],
+      duration: 650,
+      ease: 'outCubic',
+      delay: stagger(100),
+      autoplay: enterOnce(entriesContainer, 20),
     })
 
-    return () => mm.revert()
-  }, { scope: ref })
+    if (spineFill) {
+      animate(spineFill, {
+        scaleY: [0, 1],
+        ease: 'linear',
+        autoplay: onScroll({
+          target: entriesContainer,
+          enter: { target: 'top', container: 'bottom-=25%' },
+          leave: { target: 'bottom', container: 'center' },
+          sync: 0.25,
+        }),
+      })
+    }
+  })
 
   return (
-    <section id="experience" className="section-wrap" ref={ref}>
+    <section id="experience" className="section-wrap" ref={rootRef}>
       <p className="eyebrow">02 / EXPERIENCE</p>
       <h2 className="section-heading">Experience</h2>
       <div className="exp__entries">

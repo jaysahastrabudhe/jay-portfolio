@@ -1,4 +1,4 @@
-export const skillGroups = [
+﻿export const skillGroups = [
   {
     category: 'Paid Acquisition',
     size: 'lg',
@@ -39,6 +39,6 @@ export const skillGroups = [
   {
     category: 'Web Development',
     size: 'sm',
-    skills: ['React', 'Vite', 'GSAP', 'REST APIs'],
+    skills: ['React', 'Vite', 'Anime.js', 'REST APIs'],
   },
 ]

@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { gsap, ScrollTrigger, useGSAP } from '../lib/gsap'
+import { animate, onScroll } from '../lib/anime'
+import { useAnimeScope } from '../lib/useAnimeScope'
 import './Nav.css'
 
 const links = [
@@ -15,42 +16,48 @@ const NAV_HEIGHT = 64
 export default function Nav() {
   const [active, setActive] = useState(null)
 
-  const { contextSafe } = useGSAP(() => {
-    const triggers = links
+  const rootRef = useAnimeScope(() => {
+    const observers = links
       .filter(l => document.getElementById(l.id))
       .map(l =>
-        ScrollTrigger.create({
-          trigger: '#' + l.id,
-          start: 'top center',
-          end: 'bottom center',
-          onToggle: self => self.isActive && setActive(l.id),
+        onScroll({
+          target: '#' + l.id,
+          enter: { target: 'top', container: 'center' },
+          leave: { target: 'bottom', container: 'center' },
+          repeat: true,
+          onEnter: () => setActive(l.id),
+          onEnterBackward: () => setActive(l.id),
         })
       )
 
-    return () => triggers.forEach(t => t.kill())
-  }, { dependencies: [] })
+    return () => observers.forEach(o => o.revert())
+  })
 
-  const handleClick = contextSafe((event, id) => {
+  const handleClick = (event, id) => {
     event.preventDefault()
     const target = document.getElementById(id)
     if (!target) return
 
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const targetY =
+      target.getBoundingClientRect().top + window.scrollY - NAV_HEIGHT
 
     if (reduced) {
-      gsap.to(window, { scrollTo: { y: '#' + id, offsetY: NAV_HEIGHT }, duration: 0 })
+      window.scrollTo(0, targetY)
       return
     }
 
-    gsap.to(window, {
-      scrollTo: { y: '#' + id, offsetY: NAV_HEIGHT },
-      duration: 0.8,
-      ease: 'power3.inOut',
+    const o = { y: window.scrollY }
+    animate(o, {
+      y: targetY,
+      duration: 800,
+      ease: 'inOutCubic',
+      onUpdate: () => window.scrollTo(0, o.y),
     })
-  })
+  }
 
   return (
-    <header className="nav">
+    <header className="nav" ref={rootRef}>
       <div className="nav__inner">
         <a
           href="#"

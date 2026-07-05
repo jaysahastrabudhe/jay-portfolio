@@ -1,5 +1,3 @@
-import { useEffect } from 'react'
-import { ScrollTrigger } from './lib/gsap'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import Stats from './components/Stats'
@@ -12,13 +10,6 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 
 export default function App() {
-  useEffect(() => {
-    // Screenshot-heavy page: recalculate trigger positions once images land.
-    const refresh = () => ScrollTrigger.refresh()
-    window.addEventListener('load', refresh)
-    return () => window.removeEventListener('load', refresh)
-  }, [])
-
   return (
     <>
       <div className="noise" aria-hidden="true" />
