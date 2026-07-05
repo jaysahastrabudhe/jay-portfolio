@@ -1,15 +1,11 @@
 .nav {
   position: fixed;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
-  padding: 1.5rem clamp(1.5rem, 5vw, 4rem);
-  transition: background var(--duration-normal), backdrop-filter var(--duration-normal);
-}
-.nav--scrolled {
-  background: rgba(14,14,20,0.85);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-  padding: 1rem clamp(1.5rem, 5vw, 4rem);
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
 }
 .nav__inner {
   display: flex;
@@ -17,52 +13,76 @@
   justify-content: space-between;
   max-width: var(--content-max);
   margin: 0 auto;
+  padding: 1.1rem clamp(1.5rem, 5vw, 4rem);
 }
+
+/* 1.35rem is a spec-mandated exception to the token-only rule (see design-spec.md §4 Nav) */
 .nav__logo {
-  font-family: var(--font-serif);
-  font-size: 1.5rem;
-  font-weight: 900;
-  color: #fff;
-  letter-spacing: -0.01em;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: var(--fw-display);
+  font-size: 1.35rem;
+  color: var(--ink);
+  line-height: 1;
 }
-.nav__logo span { color: var(--yellow); }
-.nav__links { display: flex; gap: 2rem; }
-.nav__links a {
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  transition: color var(--duration-fast);
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2vw, 2rem);
+  overflow-x: auto;
+  scrollbar-width: none;
 }
-.nav__links a:hover { color: var(--yellow); }
-.nav__burger {
+.nav__links::-webkit-scrollbar {
   display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
 }
-.nav__burger span {
-  display: block;
-  width: 22px; height: 2px;
-  background: var(--text);
-  border-radius: 2px;
+
+.nav__link {
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+  font-family: var(--font-mono);
+  font-size: var(--text-eyebrow);
+  font-weight: var(--fw-mono);
+  letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  white-space: nowrap;
+  padding-bottom: 0.3rem;
 }
-@media (max-width: 680px) {
-  .nav__burger { display: flex; }
-  .nav__links {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: var(--dark-2);
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2.5rem;
+.nav__link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-micro) var(--ease-out-expo);
+}
+.nav__link:hover::after,
+.nav__link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.nav__num {
+  color: var(--ink-muted);
+  transition: color var(--duration-micro) var(--ease-out-expo);
+}
+.nav__link--active .nav__num {
+  color: var(--revenue);
+}
+
+@media (max-width: 768px) {
+  .nav__inner {
+    padding: 0.9rem clamp(1rem, 4vw, 2rem);
   }
-  .nav__links--open { display: flex; }
-  .nav__links a { font-size: 1.2rem; }
+  .nav__links {
+    gap: clamp(0.75rem, 3vw, 1.5rem);
+  }
+  .nav__label {
+    display: none;
+  }
 }

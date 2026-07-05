@@ -1,46 +1,97 @@
-.exp__grid {
+.exp__entries {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 0;
+  margin-top: var(--space-block);
+  padding-left: 1.5rem;
 }
-.exp__card {
+
+.exp__spine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  background: var(--rule);
+}
+
+.exp__spine-fill {
+  width: 100%;
+  height: 100%;
+  background: var(--revenue);
+  transform: scaleY(1);
+}
+
+.exp__entry {
+  position: relative;
   display: grid;
   grid-template-columns: 200px 1fr;
   gap: 2rem;
   padding: 2rem 0;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--rule);
 }
-.exp__card:last-child { border-bottom: none; }
-.exp__meta {
+
+.exp__entry:last-child {
+  border-bottom: none;
+}
+
+.exp__tick {
+  position: absolute;
+  left: -1.5rem;
+  top: 2rem;
+  width: 3px;
+  height: 28px;
+  background: var(--revenue);
+  opacity: 0;
+}
+
+.exp__entry.is-active .exp__tick {
+  opacity: 1;
+}
+
+.exp__rail {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+  color: var(--ink-muted);
+  font-variant-numeric: tabular-nums lining-nums;
 }
+
 .exp__date {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: var(--yellow);
   text-transform: uppercase;
+  letter-spacing: var(--tracking-mono);
 }
+
 .exp__company {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--text-muted);
+  color: var(--ink-muted);
 }
+
 .exp__role {
-  font-family: var(--font-serif);
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #fff;
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-variation-settings: "SOFT" 0, "WONK" 0;
+  font-size: var(--text-h3);
+  font-weight: var(--fw-semibold);
+  line-height: var(--leading-h3);
+  letter-spacing: var(--tracking-h3);
+  color: var(--ink);
   margin-bottom: 0.75rem;
-  line-height: 1.3;
 }
+
 .exp__desc {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  line-height: 1.75;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: var(--fw-body);
+  line-height: var(--leading-body);
+  color: var(--ink-muted);
 }
-@media (max-width: 680px) {
-  .exp__card { grid-template-columns: 1fr; gap: 0.75rem; }
+
+@media (max-width: 768px) {
+  .exp__entry {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
 }

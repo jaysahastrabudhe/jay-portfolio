@@ -1,32 +1,67 @@
-import { useReveal } from '../hooks/useReveal'
+import { useRef } from 'react'
+import { gsap, useGSAP } from '../lib/gsap'
+import { sectionHeaderReveal } from '../lib/sectionReveal'
 import { liPosts } from '../data/projects'
 import './MarketingWork.css'
 
-function LinkedInIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-    </svg>
-  )
-}
+const cardMetrics = ['847 REACTIONS', '6H → 4MIN', '634 REACTIONS', '47 TESTS / 90 DAYS']
 
 export default function MarketingWork() {
-  const ref = useReveal()
+  const sectionRef = useRef(null)
+
+  useGSAP(
+    () => {
+      sectionHeaderReveal(sectionRef.current)
+
+      const mm = gsap.matchMedia()
+
+      mm.add('(prefers-reduced-motion: no-preference)', () => {
+        const cards = gsap.utils.toArray('.mkt__card')
+        gsap.set(cards, { autoAlpha: 0, y: 40 })
+
+        gsap.to(cards, {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.65,
+          ease: 'power3.out',
+          stagger: { each: 0.12, from: 'start' },
+          scrollTrigger: {
+            trigger: '.mkt__grid',
+            start: 'top 80%',
+            once: true,
+            toggleActions: 'play none none none',
+          },
+        })
+      })
+
+      mm.add('(prefers-reduced-motion: reduce)', () => {
+        const cards = gsap.utils.toArray('.mkt__card')
+        gsap.set(cards, { autoAlpha: 1, y: 0 })
+        gsap.from(cards, {
+          autoAlpha: 0,
+          duration: 0.3,
+          ease: 'none',
+          scrollTrigger: { trigger: '.mkt__grid', start: 'top 85%', once: true },
+        })
+      })
+
+      return () => mm.revert()
+    },
+    { scope: sectionRef }
+  )
 
   return (
-    <section id="marketing" className="mkt">
-      <div className="section-wrap reveal" ref={ref}>
-        <p className="section-label">Thought Leadership</p>
+    <section id="work" className="mkt" ref={sectionRef}>
+      <div className="section-wrap">
+        <p className="eyebrow">03 / SELECTED WORK</p>
         <h2 className="section-heading">Marketing Work</h2>
-        <div className="mkt__li-grid">
+        <div className="mkt__grid">
           {liPosts.map((post, i) => (
-            <article key={i} className="mkt__li-card">
-              <div className="mkt__li-header">
-                <LinkedInIcon />
-                <span className="mkt__li-tag">{post.tag}</span>
-              </div>
-              <p className="mkt__li-text">{post.text}</p>
-              <p className="mkt__li-reactions">{post.reactions}</p>
+            <article key={i} className="mkt__card">
+              <p className="mkt__card-metric">{cardMetrics[i]}</p>
+              <p className="mkt__card-tag">{post.tag}</p>
+              <p className="mkt__card-text">{post.text}</p>
+              <p className="mkt__card-engagement">{post.reactions}</p>
             </article>
           ))}
         </div>

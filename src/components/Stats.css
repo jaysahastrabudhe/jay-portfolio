@@ -1,42 +1,89 @@
 .stats {
-  background: var(--dark-2);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  background: var(--paper);
+  border-top: 3px solid var(--rule-strong);
+  border-bottom: 3px solid var(--rule-strong);
+  padding-block: var(--space-block);
 }
+
 .stats__inner {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
   max-width: var(--content-max);
   margin: 0 auto;
+  padding-inline: clamp(1.5rem, 5vw, 4rem);
 }
-.stats__item {
-  padding: 2.5rem 1.5rem;
+
+.stats__eyebrow {
+  margin-bottom: var(--space-block);
+}
+
+.stats__rows {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 0.4rem;
-  border-right: 1px solid var(--border);
 }
-.stats__item:last-child { border-right: none; }
-.stats__value {
-  font-family: var(--font-serif);
-  font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
-  font-weight: 900;
-  color: var(--yellow);
-  line-height: 1;
+
+.stats__row {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: clamp(1rem, 3vw, 2rem);
+  padding-block: clamp(1.25rem, 1rem + 1.2vw, 2rem);
 }
+
+.stats__rule {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--rule);
+  transform-origin: left center;
+}
+
 .stats__label {
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
+  font-family: var(--font-mono);
+  font-weight: var(--fw-mono);
+  font-size: var(--text-eyebrow);
+  letter-spacing: var(--tracking-mono);
   text-transform: uppercase;
-  color: var(--text-muted);
-  text-align: center;
+  color: var(--ink);
 }
-@media (max-width: 640px) {
-  .stats__inner { grid-template-columns: repeat(3, 1fr); }
-  .stats__item:nth-child(3) { border-right: none; }
+
+.stats__number-wrap {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  min-width: 4ch;
+  text-align: right;
 }
-@media (max-width: 400px) {
-  .stats__inner { grid-template-columns: repeat(2, 1fr); }
+
+.stats__number {
+  font-family: var(--font-mono);
+  font-size: var(--text-stat);
+  font-weight: var(--fw-stat);
+  color: var(--revenue);
+  line-height: 1;
+  font-variant-numeric: tabular-nums lining-nums;
+  text-align: right;
+}
+
+.stats__suffix {
+  font-family: var(--font-mono);
+  font-size: 0.45em;
+  font-weight: var(--fw-stat);
+  color: var(--revenue);
+  vertical-align: super;
+  margin-left: 0.05em;
+}
+
+@media (max-width: 768px) {
+  .stats__row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .stats__number-wrap {
+    width: 100%;
+    justify-content: flex-end;
+  }
 }

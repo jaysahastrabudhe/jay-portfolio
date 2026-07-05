@@ -1,49 +1,75 @@
-import { useEffect, useRef } from 'react'
-import { useReveal } from '../hooks/useReveal'
-import { skills } from '../data/skills'
+import { useRef } from 'react'
+import { gsap, useGSAP } from '../lib/gsap'
+import { sectionHeaderReveal } from '../lib/sectionReveal'
+import { skillGroups } from '../data/skills'
 import './Skills.css'
 
 export default function Skills() {
-  const ref = useReveal()
-  const barsRef = useRef(null)
+  const sectionRef = useRef(null)
 
-  useEffect(() => {
-    const el = barsRef.current
-    if (!el) return
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          el.querySelectorAll('.sk__fill').forEach(bar => bar.classList.add('sk__fill--on'))
-          obs.unobserve(el)
-        }
-      },
-      { threshold: 0.2 }
-    )
-    obs.observe(el)
-    return () => obs.disconnect()
-  }, [])
+  useGSAP(
+    () => {
+      sectionHeaderReveal(sectionRef.current)
+
+      const tiles = gsap.utils.toArray('.sk__tile', sectionRef.current)
+      if (tiles.length === 0) return
+
+      const mm = gsap.matchMedia()
+
+      mm.add('(prefers-reduced-motion: no-preference)', () => {
+        gsap.set(tiles, { autoAlpha: 0, y: 20 })
+
+        gsap.to(tiles, {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.5,
+          ease: 'power3.out',
+          stagger: { each: 0.04, from: 'start' },
+          scrollTrigger: {
+            trigger: '.sk__grid',
+            start: 'top 80%',
+            once: true,
+            toggleActions: 'play none none none',
+          },
+        })
+      })
+
+      mm.add('(prefers-reduced-motion: reduce)', () => {
+        gsap.set(tiles, { autoAlpha: 1, y: 0 })
+        gsap.from(tiles, {
+          autoAlpha: 0,
+          duration: 0.3,
+          ease: 'none',
+          scrollTrigger: { trigger: '.sk__grid', start: 'top 85%', once: true },
+        })
+      })
+
+      return () => mm.revert()
+    },
+    { scope: sectionRef }
+  )
 
   return (
-    <section className="section-wrap">
-      <div className="reveal" ref={ref}>
-        <p className="section-label">Capabilities</p>
-        <h2 className="section-heading">Skills</h2>
-        <div className="sk__grid" ref={barsRef}>
-          {skills.map(s => (
-            <div key={s.name} className="sk__item">
-              <div className="sk__meta">
-                <span className="sk__name">{s.name}</span>
-                <span className="sk__pct">{s.pct}%</span>
-              </div>
-              <div className="sk__track">
-                <div
-                  className="sk__fill"
-                  style={{ '--w': `${s.pct}%` }}
-                />
-              </div>
-            </div>
-          ))}
-        </div>
+    <section id="skills" className="section-wrap" ref={sectionRef}>
+      <p className="eyebrow">05 / CAPABILITIES</p>
+      <h2 className="section-heading">Capabilities</h2>
+      <div className="sk__grid">
+        {skillGroups.map(group => (
+          <article
+            key={group.category}
+            className={`sk__tile sk__tile--${group.size}`}
+          >
+            <h3 className="sk__category">{group.category}</h3>
+            <p className="sk__list">
+              {group.skills.map((skill, i) => (
+                <span className="sk__skill" key={skill}>
+                  {skill}
+                  {i < group.skills.length - 1 ? ', ' : ''}
+                </span>
+              ))}
+            </p>
+          </article>
+        ))}
       </div>
     </section>
   )

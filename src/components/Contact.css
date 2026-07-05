@@ -1,37 +1,75 @@
+/* ============================================================
+   Contact — the colophon. Full-bleed --ink block, --paper text.
+   ============================================================ */
+
 .contact {
-  background: var(--yellow);
+  background: var(--ink);
+  color: var(--paper);
 }
-.contact__heading {
-  font-family: var(--font-serif);
-  font-size: clamp(2rem, 1.5rem + 3vw, 4rem);
-  font-weight: 900;
-  color: #0e0e14;
-  line-height: 1.1;
-  margin-bottom: 1.25rem;
+
+.contact__inner {
+  display: flex;
+  flex-direction: column;
 }
-.contact__sub {
-  font-size: clamp(0.95rem, 0.9rem + 0.3vw, 1.1rem);
-  color: rgba(14,14,20,0.7);
-  max-width: 50ch;
-  line-height: 1.7;
-  margin-bottom: 2.5rem;
+
+.contact__eyebrow {
+  color: oklch(96.8% 0.014 85 / 0.55);
+  margin-bottom: clamp(2.5rem, 2rem + 2vw, 4rem);
 }
-.contact__links { display: flex; gap: 1rem; flex-wrap: wrap; }
-.contact__btn {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.85rem 2rem;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+
+.contact__mega {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-variation-settings: "SOFT" 0, "WONK" 0;
+  font-size: var(--text-mega);
+  font-weight: var(--fw-display-hero);
+  line-height: 0.9;
+  color: var(--paper);
+  max-width: 100%;
+}
+
+.contact__mega-em {
+  font-style: italic;
+  color: var(--revenue);
+  font-variation-settings: "SOFT" 0, "WONK" 0;
+}
+
+.contact__email {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--text-h3);
+  font-weight: var(--fw-mono);
+  color: var(--paper);
+  margin-top: clamp(2.5rem, 2rem + 2vw, 4rem);
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.2em;
+  transition: text-decoration-color var(--duration-micro) var(--ease-out-expo);
+  width: fit-content;
+}
+
+.contact__email:hover {
+  text-decoration-color: currentColor;
+}
+
+.contact__socials {
+  display: flex;
+  gap: clamp(1.5rem, 1.2rem + 1.5vw, 2.5rem);
+  margin-top: clamp(1.5rem, 1.2rem + 1.5vw, 2.5rem);
+}
+
+.contact__social {
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+  font-weight: var(--fw-mono);
+  letter-spacing: var(--tracking-mono);
   text-transform: uppercase;
-  border-radius: 2px;
-  transition: transform var(--duration-fast), opacity var(--duration-fast);
+  color: oklch(96.8% 0.014 85 / 0.7);
+  transition: color var(--duration-micro) var(--ease-out-expo);
 }
-.contact__btn:hover { transform: translateY(-2px); opacity: 0.85; }
-.contact__btn { background: #0e0e14; color: var(--yellow); }
-.contact__btn--ghost {
-  background: transparent;
-  border: 2px solid #0e0e14;
-  color: #0e0e14;
+
+.contact__social:hover {
+  color: var(--paper);
 }
