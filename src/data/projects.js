@@ -31,13 +31,6 @@ export const githubProjects = [
 
 export const webProjects = [
   {
-    name: 'MailBlast Mass Mailer',
-    url: 'https://github.com/jaysahastrabudhe/marketing-funnel-dashboard',
-    image: null,
-    desc: 'Bulk emailing platform featuring a drag-and-drop HTML email builder (GrapesJS), CSV customer list parsing & deduplication, Resend API integrations, and real-time delivery reports.',
-    tags: ['Next.js', 'Drizzle', 'Postgres', 'Resend API'],
-  },
-  {
     name: 'Verve Nexus',
     url: 'https://forestgreen-locust-191432.hostingersite.com',
     image: null,
@@ -52,11 +45,25 @@ export const webProjects = [
     tags: ['React', 'Supabase', 'Razorpay'],
   },
   {
+    name: 'beliive',
+    url: 'https://darkred-leopard-153534.hostingersite.com/',
+    image: null,
+    desc: 'Fully operational e-commerce store with active payment gateway integration, product catalogue management, and order tracking. Built for a product brand with real transaction volume.',
+    tags: ['WordPress', 'WooCommerce', 'Razorpay'],
+  },
+  {
     name: 'Jay Defence Academy',
     url: 'https://jaydefenceacademy.com',
     image: null,
     desc: 'Institutional coaching site featuring a timed mock-test exam practice engine, custom block layouts, and #1 Google local search ranking in North Karnataka.',
     tags: ['WordPress', 'Local SEO', 'Mock Engine'],
+  },
+  {
+    name: 'scrpt.',
+    url: 'https://scrpt.in',
+    image: null,
+    desc: 'Agency landing page for scrpt. a remote creatives collective from Pune offering performance marketing, content and video, web development, and brand design.',
+    tags: ['React', 'Vite', 'GSAP'],
   },
 ]
 

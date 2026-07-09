@@ -90,10 +90,11 @@ export default function Portfolio() {
       setHistory(prev => [
         ...prev,
         { type: 'output', text: 'Active Shipped Web Platforms:' },
-        { type: 'output', text: '  1. MailBlast Mass Mailer   - Next.js, Drizzle, Postgres, Resend API' },
-        { type: 'output', text: '  2. Verve Nexus             - React, Vite, GSAP capacity layouts' },
-        { type: 'output', text: '  3. JawanDrop               - React, Supabase, Razorpay SDK' },
-        { type: 'output', text: '  4. Jay Defence Academy     - WordPress, timed exam mock test engine' }
+        { type: 'output', text: '  1. Verve Nexus             - React, Vite, GSAP capacity layouts' },
+        { type: 'output', text: '  2. JawanDrop               - React, Supabase, Razorpay SDK' },
+        { type: 'output', text: '  3. beliive                 - WordPress, WooCommerce, Razorpay e-commerce' },
+        { type: 'output', text: '  4. Jay Defence Academy     - WordPress, timed exam mock test engine' },
+        { type: 'output', text: '  5. scrpt.                  - React, Vite agency website' }
       ])
     } else if (baseCmd === 'sysinfo') {
       setHistory(prev => [
