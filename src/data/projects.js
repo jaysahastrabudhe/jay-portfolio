@@ -1,21 +1,14 @@
 export const githubProjects = [
   {
     name: 'le-whatsapp-engine',
-    desc: "WhatsApp automation engine for Let's Enterprise — moves mid-funnel leads to booked admissions calls via intelligent conversation flows.",
-    lang: 'JavaScript',
-    langColor: '#f1e05a',
+    desc: 'Production middleware bridging Twilio WhatsApp APIs, Zoho CRM, and Upstash Redis queues. Features dynamic route rule evaluations.',
+    lang: 'TypeScript',
+    langColor: '#3178c6',
     url: 'https://github.com/jaysahastrabudhe/le-whatsapp-engine',
   },
   {
-    name: 'prjct-iris',
-    desc: 'AI-powered project management tool with natural-language task creation, smart prioritisation, and team context awareness.',
-    lang: 'TypeScript',
-    langColor: '#3178c6',
-    url: 'https://github.com/jaysahastrabudhe/prjct-iris',
-  },
-  {
     name: 'le-alumni-platform',
-    desc: "Alumni networking and mentorship platform for Let's Enterprise graduates — connecting learners with industry professionals.",
+    desc: 'Alumni networking and mentorship platform for Let\'s Enterprise graduates connecting learners with industry professionals.',
     lang: 'TypeScript',
     langColor: '#3178c6',
     url: 'https://github.com/jaysahastrabudhe/le-alumni-platform',
@@ -36,7 +29,7 @@ export const githubProjects = [
   },
   {
     name: 'le-admission-portal',
-    desc: 'BBA 2026 admissions portal with multi-step application flow, interviewer feedback, and Supabase backend.',
+    desc: 'BBA admissions portal with multi-step application flow, interviewer feedback nodes, and Supabase backend.',
     lang: 'JavaScript',
     langColor: '#f1e05a',
     url: 'https://github.com/jaysahastrabudhe/le-admission-portal',
@@ -45,39 +38,39 @@ export const githubProjects = [
 
 export const webProjects = [
   {
+    name: 'LE WhatsApp Engine',
+    url: 'https://github.com/jaysahastrabudhe/le-whatsapp-engine',
+    image: null,
+    desc: 'Intelligent automation middleware connecting Zoho CRM, Twilio WhatsApp, and Neon Postgres. Features an automated NLP reply classifier, SLA metric tracking, and a React Flow visual logic builder.',
+    tags: ['Next.js', 'Postgres', 'Redis', 'Twilio API'],
+  },
+  {
+    name: 'MailBlast Mass Mailer',
+    url: 'https://github.com/jaysahastrabudhe/marketing-funnel-dashboard',
+    image: null,
+    desc: 'Bulk emailing platform featuring a drag-and-drop HTML email builder (GrapesJS), CSV customer list parsing & deduplication, Resend API integrations, and real-time delivery reports.',
+    tags: ['Next.js', 'Drizzle', 'Postgres', 'Resend API'],
+  },
+  {
+    name: 'Verve Nexus',
+    url: 'https://forestgreen-locust-191432.hostingersite.com',
+    image: null,
+    desc: 'Collaboration platform connecting filmmakers with creative VFX studio production capacities. Features custom dark UI layouts and scroll-triggered transitions.',
+    tags: ['React', 'Vite', 'GSAP'],
+  },
+  {
+    name: 'JawanDrop',
+    url: 'https://jawandrop.in',
+    image: null,
+    desc: 'Patriot apparel store with live Razorpay payment gateway integration, real-time Supabase inventory allocations, and checkout pipeline logs.',
+    tags: ['React', 'Supabase', 'Razorpay'],
+  },
+  {
     name: 'Jay Defence Academy',
     url: 'https://jaydefenceacademy.com',
-    image: '/screenshot-jda.png',
-    desc: 'Full-stack education institute website for an NDA coaching academy. Features a live mock-test engine with timed practice sessions, score tracking, and performance analytics for defence exam aspirants.',
-    tags: ['React', 'Supabase', 'Resend'],
-  },
-  {
-    name: 'Jawan Drop',
-    url: 'https://jawandrop.in',
-    image: '/screenshot-jawandrop.png',
-    desc: 'Corporate consultancy website for a Pune-based business advisory firm. Clean editorial layout with service pages, team profiles, and a contact flow connected to CRM.',
-    tags: ['WordPress', 'Custom Theme'],
-  },
-  {
-    name: 'VerveFX',
-    url: 'https://forestgreen-locust-191432.hostingersite.com',
-    image: '/screenshot-vervefx.png',
-    desc: 'Creative agency portfolio and services site for VerveFX showcasing brand work, campaigns, and production capabilities with a bold visual identity.',
-    tags: ['WordPress', 'Custom Theme'],
-  },
-  {
-    name: 'beliive',
-    url: 'https://darkred-leopard-153534.hostingersite.com',
-    image: '/screenshot-beliive.png',
-    desc: 'Fully operational e-commerce store with active payment gateway integration, product catalogue management, and order tracking. Built for a product brand with real transaction volume.',
-    tags: ['WordPress', 'WooCommerce', 'Razorpay'],
-  },
-  {
-    name: 'SCRPT.',
-    url: 'https://scrpt.in',
     image: null,
-    desc: 'Agency website for scrpt. a remote creatives collective from Pune offering performance marketing, content and video, web development, and brand design.',
-    tags: ['React', 'Vite'],
+    desc: 'Institutional coaching site featuring a timed mock-test exam practice engine, custom block layouts, and #1 Google local search ranking in North Karnataka.',
+    tags: ['WordPress', 'Local SEO', 'Mock Engine'],
   },
 ]
 
@@ -104,13 +97,4 @@ export const liPosts = [
   },
 ]
 
-export const slides = [
-  '/slides/slide-1.jpg',
-  '/slides/slide-2.jpg',
-  '/slides/slide-3.jpg',
-  '/slides/slide-4.jpg',
-  '/slides/slide-5.jpg',
-  '/slides/slide-6.jpg',
-  '/slides/slide-7.jpg',
-  '/slides/slide-8.jpg',
-]
+export const slides = []

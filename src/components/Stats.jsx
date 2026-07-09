@@ -4,15 +4,10 @@ import './Stats.css'
 
 const stats = [
   { value: 5, suffix: '+', label: 'Years Experience' },
+  { value: 6, suffix: '+', label: 'Platforms Shipped' },
+  { value: 8, suffix: '+', label: 'API Integrations' },
   { value: 15, suffix: 'M+', label: 'Views Generated' },
-  { value: 8, suffix: '+', label: 'Brands Managed' },
-  { value: 3, suffix: '', label: 'Client Websites' },
-  {
-    value: 2000,
-    suffix: '+',
-    label: 'LinkedIn Followers',
-    format: n => (n / 1000).toFixed(1).replace('.0', '') + 'K',
-  },
+  { value: 8, suffix: '+', label: 'Brands Scaled' },
 ]
 
 function formatValue(stat) {

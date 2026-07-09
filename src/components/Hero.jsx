@@ -4,10 +4,10 @@ import { useAnimeScope } from '../lib/useAnimeScope'
 import './Hero.css'
 
 const META_ITEMS = [
-  '— JAY SAHASTRABUDHE',
-  'PERFORMANCE MARKETER',
+  '✦ JAY SAHASTRABUDHE',
+  'FULL STACK & GROWTH ENGINEER',
   'PUNE, IN',
-  '5+ YRS · 15M+ VIEWS · 8+ BRANDS',
+  '5+ YRS · 6+ WEB APPS · 8+ API INTEGRATIONS',
 ]
 
 export default function Hero() {
@@ -130,15 +130,13 @@ export default function Hero() {
           <figcaption className="hero__figcaption">FIG. 01 — THE OPERATOR</figcaption>
         </figure>
         <p className="hero__eyebrow">
-          PERFORMANCE MARKETING — META / GOOGLE / AI / EDTECH
+          FULL STACK DEVELOPMENT & GROWTH ENGINEERING
         </p>
         <h1 id="hero-heading" className="hero__heading">
-          Marketing that has to <em className="hero__wonk">answer</em> for the money.
+          Code & systems built to <em className="hero__wonk">scale</em> acquisition.
         </h1>
         <p className="hero__bio">
-          I'm a performance marketer who cares about one question: did the spend turn
-          into revenue? Paid acquisition on Meta, Google, LinkedIn and YouTube — plus the
-          AI-powered web apps and automation engines that make it accountable.
+          I'm a full stack developer & growth engineer who bridges software engineering and performance marketing. I build high-concurrency integrations, messaging APIs, Next.js web applications, and database pipelines that drive revenue.
         </p>
         <div className="hero__ctas">
           <a href="#contact" ref={primaryCtaRef} className="hero__cta hero__cta--primary">

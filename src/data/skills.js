@@ -1,44 +1,45 @@
-﻿export const skillGroups = [
+export const skillGroups = [
   {
-    category: 'Paid Acquisition',
+    category: 'Web Development',
     size: 'lg',
     skills: [
-      'Performance marketing',
-      'Meta ads & paid social',
-      'Google ads',
-      'Lead generation & scoring',
-      'Budget pacing & ROAS',
+      'React & Next.js',
+      'Postgres & Supabase & Neon',
+      'Redis & Upstash Queues',
+      'Node.js & Express APIs',
+      'Drizzle & Prisma ORM',
+      'REST & Webhook integrations',
     ],
   },
   {
     category: 'AI & Automation',
     size: 'lg',
     skills: [
-      'AI-powered apps & web dev',
-      'Marketing automation',
-      'Workflow orchestration',
+      'Twilio & WhatsApp Automation',
+      'Marketing system sync integrations',
+      'Workflow rules engines',
       'Prompt engineering',
-      'Zoho CRM & scripting',
+      'Zoho CRM SDK & scripting',
     ],
   },
   {
-    category: 'Content & SEO',
+    category: 'Paid Acquisition',
     size: 'sm',
-    skills: ['Content strategy', 'SEO', 'Copywriting', 'Editorial calendars'],
+    skills: [
+      'Performance marketing',
+      'Meta ads & paid social',
+      'Google ads',
+      'Attribution telemetry',
+    ],
   },
   {
-    category: 'Analytics',
+    category: 'Analytics & Attribution',
     size: 'sm',
-    skills: ['Funnel analysis', 'Attribution', 'A/B testing', 'Dashboards'],
+    skills: ['Funnel logic', 'Database event pipelines', 'A/B testing', 'Growth dashboards'],
   },
   {
-    category: 'CRM & Lifecycle',
+    category: 'Technical SEO',
     size: 'sm',
-    skills: ['Lead scoring', 'Segmentation', 'Email sequences', 'Nurture flows'],
-  },
-  {
-    category: 'Web Development',
-    size: 'sm',
-    skills: ['React', 'Vite', 'Anime.js', 'REST APIs'],
+    skills: ['On-page schemas', 'Metadata optimization', 'Core Web Vitals', 'Custom block styling'],
   },
 ]
