@@ -1,0 +1,325 @@
+.portfolio {
+  background: var(--panel);
+  padding-block: var(--space-section);
+}
+
+.portfolio__inner {
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding-inline: clamp(1.5rem, 5vw, 4rem);
+}
+
+.portfolio__eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-eyebrow);
+  font-weight: var(--fw-mono);
+  letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+  color: var(--terminal);
+}
+
+.portfolio__heading {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-variation-settings: "SOFT" 0, "WONK" 0;
+  font-size: var(--text-display);
+  font-weight: var(--fw-display);
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-display);
+  color: var(--panel-text);
+  margin-top: 0.75rem;
+  margin-bottom: var(--space-block);
+}
+
+/* ---------- 2-Column Side-By-Side Layout ---------- */
+.portfolio__columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+}
+
+@media (max-width: 991px) {
+  .portfolio__columns {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+.portfolio__col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.portfolio__col-heading {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: var(--fw-display);
+  color: var(--panel-text);
+  border-bottom: 1px solid var(--panel-rule);
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+/* ---------- Left Column: Dev elements ---------- */
+.portfolio__screenshot-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.portfolio__screenshot-tile {
+  display: block;
+  border-radius: var(--radius-terminal);
+  background: oklch(22% 0.02 275);
+  border: 1px solid var(--panel-rule);
+  text-decoration: none;
+  transition: border-color var(--duration-micro) var(--ease-out-expo);
+}
+
+.portfolio__screenshot-tile:hover {
+  border-color: var(--panel-muted);
+}
+
+.portfolio__screenshot-body {
+  padding: 1.25rem 1.5rem;
+}
+
+.portfolio__screenshot-title {
+  font-family: var(--font-mono);
+  font-size: var(--text-body);
+  font-weight: var(--fw-medium);
+  color: var(--panel-text);
+  margin-bottom: 0.5rem;
+}
+
+.portfolio__project-desc {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: var(--fw-body);
+  line-height: var(--leading-body);
+  color: var(--panel-muted);
+  margin-bottom: 1rem;
+}
+
+.portfolio__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.portfolio__tag {
+  font-family: var(--font-mono);
+  font-size: var(--text-eyebrow);
+  font-weight: var(--fw-mono);
+  color: var(--terminal);
+}
+
+.portfolio__repo-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.portfolio__repo-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.25rem;
+  border-radius: var(--radius-terminal);
+  background: oklch(18% 0.01 275);
+  border: 1px solid var(--panel-rule);
+  text-decoration: none;
+  transition: border-color var(--duration-micro) var(--ease-out-expo);
+}
+
+.portfolio__repo-tile:hover {
+  border-color: var(--panel-muted);
+}
+
+.portfolio__repo-header {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--panel-muted);
+}
+
+.portfolio__repo-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--panel-muted);
+}
+
+.portfolio__repo-header svg {
+  margin-left: auto;
+  color: var(--panel-muted);
+}
+
+.portfolio__repo-name {
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+  font-weight: var(--fw-medium);
+  color: var(--terminal);
+}
+
+.portfolio__repo-desc {
+  font-family: var(--font-body);
+  font-size: var(--text-eyebrow);
+  font-weight: var(--fw-body);
+  line-height: var(--leading-body);
+  color: var(--panel-muted);
+}
+
+/* ---------- Right Column: Marketing elements ---------- */
+.portfolio__campaign-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.portfolio__campaign-tile {
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius-terminal);
+  background: oklch(22% 0.02 275);
+  border: 1px solid var(--panel-rule);
+}
+
+.portfolio__campaign-org {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--text-body);
+  font-weight: var(--fw-medium);
+  color: var(--panel-text);
+  margin-bottom: 0.25rem;
+}
+
+.portfolio__campaign-role {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--text-eyebrow);
+  font-weight: var(--fw-mono);
+  color: var(--terminal);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+}
+
+.portfolio__campaign-desc {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: var(--fw-body);
+  line-height: var(--leading-body);
+  color: var(--panel-muted);
+}
+
+.portfolio__mkt-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.portfolio__mkt-card {
+  padding: 1.25rem;
+  border-radius: var(--radius-terminal);
+  background: oklch(18% 0.01 275);
+  border: 1px solid var(--panel-rule);
+}
+
+.portfolio__mkt-tag {
+  font-family: var(--font-mono);
+  font-size: var(--text-eyebrow);
+  font-weight: var(--fw-mono);
+  text-transform: uppercase;
+  color: var(--terminal);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.portfolio__mkt-text {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: var(--fw-body);
+  line-height: var(--leading-body);
+  color: var(--panel-muted);
+}
+
+/* ---------- Ecosystem CLI styles ---------- */
+.portfolio__cli {
+  background: oklch(14% 0.01 275);
+  border: 1px solid var(--panel-rule);
+  border-radius: var(--radius-terminal);
+  overflow: hidden;
+  box-shadow: 0 12px 32px oklch(0% 0 0 / 0.45);
+}
+
+.portfolio__cli-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: oklch(18% 0.02 275);
+  border-bottom: 1px solid var(--panel-rule);
+}
+
+.portfolio__cli-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.portfolio__cli-dot--red { background: #FF5F56; }
+.portfolio__cli-dot--yellow { background: #FFBD2E; }
+.portfolio__cli-dot--green { background: #27C93F; }
+
+.portfolio__cli-title {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: var(--fw-mono);
+  color: var(--panel-muted);
+  margin-left: auto;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.portfolio__cli-body {
+  padding: 1.5rem;
+  height: 280px;
+  overflow-y: auto;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--panel-text);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: left;
+}
+
+.portfolio__cli-line {
+  white-space: pre-wrap;
+}
+
+.portfolio__cli-input-line {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.portfolio__cli-prompt {
+  color: var(--terminal);
+  font-weight: var(--fw-bold);
+}
+
+.portfolio__cli-input {
+  background: transparent;
+  border: none;
+  color: var(--panel-text);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  outline: none;
+  flex: 1;
+}

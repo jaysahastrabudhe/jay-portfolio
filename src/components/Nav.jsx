@@ -6,9 +6,8 @@ import './Nav.css'
 const links = [
   { id: 'ledger', num: '01', label: 'Ledger' },
   { id: 'experience', num: '02', label: 'Experience' },
-  { id: 'work', num: '03', label: 'Work' },
-  { id: 'terminal', num: '04', label: 'Terminal' },
-  { id: 'contact', num: '05', label: 'Contact' },
+  { id: 'portfolio', num: '03', label: 'Portfolio' },
+  { id: 'contact', num: '04', label: 'Contact' },
 ]
 
 const NAV_HEIGHT = 64

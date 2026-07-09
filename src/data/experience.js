@@ -3,7 +3,7 @@ export const experience = [
     date: 'Jan 2026 – Present',
     company: "Let's Enterprise",
     role: 'Performance Marketing Manager — Meta Ads, Lead Gen & Growth',
-    desc: 'Manage paid acquisition on Meta optimised for lead quality over volume. Built AI-assisted web apps and WhatsApp automation engines that move mid-funnel leads to booked admissions calls. Conduct digital marketing and web development workshops for students, turning program learners into practitioners.',
+    desc: 'Manage paid acquisition on Meta optimised for lead quality over volume. Built AI-assisted web applications and CRM lead intake pipelines that move mid-funnel leads to booked admissions calls. Conduct digital marketing and web development workshops for students, turning program learners into practitioners.',
   },
   {
     date: 'Feb 2025 – Jan 2026',
@@ -35,8 +35,8 @@ export const education = [
   {
     date: '2017 – 2020',
     school: "St. Xavier's College, Pune",
-    degree: 'B.Sc. Computer Software Technology',
-    desc: 'GPA 3.14/4. Foundation in software development, data structures, programming, and business communications.',
+    degree: 'Bachelor of Vocation (B.Voc) in Software Development',
+    desc: 'Completed a three-year program covering advanced programming, data structures, software engineering, and hands-on work with industry-standard tools.',
   },
 ]
 

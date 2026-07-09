@@ -1,12 +1,5 @@
 export const githubProjects = [
   {
-    name: 'le-whatsapp-engine',
-    desc: 'Production middleware bridging Twilio WhatsApp APIs, Zoho CRM, and Upstash Redis queues. Features dynamic route rule evaluations.',
-    lang: 'TypeScript',
-    langColor: '#3178c6',
-    url: 'https://github.com/jaysahastrabudhe/le-whatsapp-engine',
-  },
-  {
     name: 'le-alumni-platform',
     desc: 'Alumni networking and mentorship platform for Let\'s Enterprise graduates connecting learners with industry professionals.',
     lang: 'TypeScript',
@@ -22,7 +15,7 @@ export const githubProjects = [
   },
   {
     name: 'marketing-funnel-dashboard',
-    desc: 'Unified analytics dashboard connecting Meta Ads to WhatsApp to Zoho CRM, built on Vite + Vercel + Neon Postgres.',
+    desc: 'Unified analytics dashboard connecting Meta Ads to client lead writebacks, built on Vite + Vercel + Neon Postgres.',
     lang: 'TypeScript',
     langColor: '#3178c6',
     url: 'https://github.com/jaysahastrabudhe/marketing-funnel-dashboard',
@@ -37,13 +30,6 @@ export const githubProjects = [
 ]
 
 export const webProjects = [
-  {
-    name: 'LE WhatsApp Engine',
-    url: 'https://github.com/jaysahastrabudhe/le-whatsapp-engine',
-    image: null,
-    desc: 'Intelligent automation middleware connecting Zoho CRM, Twilio WhatsApp, and Neon Postgres. Features an automated NLP reply classifier, SLA metric tracking, and a React Flow visual logic builder.',
-    tags: ['Next.js', 'Postgres', 'Redis', 'Twilio API'],
-  },
   {
     name: 'MailBlast Mass Mailer',
     url: 'https://github.com/jaysahastrabudhe/marketing-funnel-dashboard',
@@ -81,7 +67,7 @@ export const liPosts = [
     tag: 'Performance Marketing',
   },
   {
-    text: 'Built an AI-powered WhatsApp engine that reduced lead response time from 6 hours to 4 minutes. The secret? It does not reply fast it asks the right question at the right moment.',
+    text: 'Built an AI-powered lead intake pipeline that reduced lead response time from 6 hours to 4 minutes. The secret? It does not reply fast it asks the right question at the right moment.',
     reactions: '1.2K reactions · 89 comments',
     tag: 'Marketing Automation',
   },

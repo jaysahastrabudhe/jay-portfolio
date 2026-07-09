@@ -118,6 +118,30 @@ export default function Hero() {
   return (
     <section className="hero" ref={rootRef} aria-labelledby="hero-heading">
       <div className="hero__stage">
+        <div className="hero__content">
+          <p className="hero__eyebrow">
+            FULL STACK DEVELOPMENT & GROWTH ENGINEERING
+          </p>
+          <h1 id="hero-heading" className="hero__heading">
+            Code & systems built to <em className="hero__wonk">scale</em> acquisition.
+          </h1>
+          <p className="hero__bio">
+            I'm a full stack developer & growth engineer who bridges software engineering and performance marketing. I build high-concurrency integrations, messaging APIs, Next.js web applications, and database pipelines that drive revenue.
+          </p>
+          <div className="hero__ctas">
+            <a href="#contact" ref={primaryCtaRef} className="hero__cta hero__cta--primary">
+              Get in touch
+            </a>
+            <a
+              href="https://linkedin.com/in/jaysahastrabudhe"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hero__cta hero__cta--ghost"
+            >
+              LinkedIn
+            </a>
+          </div>
+        </div>
         <figure className="hero__figure">
           <img
             src="/jay-hero.jpg"
@@ -129,28 +153,6 @@ export default function Hero() {
           />
           <figcaption className="hero__figcaption">FIG. 01 — THE OPERATOR</figcaption>
         </figure>
-        <p className="hero__eyebrow">
-          FULL STACK DEVELOPMENT & GROWTH ENGINEERING
-        </p>
-        <h1 id="hero-heading" className="hero__heading">
-          Code & systems built to <em className="hero__wonk">scale</em> acquisition.
-        </h1>
-        <p className="hero__bio">
-          I'm a full stack developer & growth engineer who bridges software engineering and performance marketing. I build high-concurrency integrations, messaging APIs, Next.js web applications, and database pipelines that drive revenue.
-        </p>
-        <div className="hero__ctas">
-          <a href="#contact" ref={primaryCtaRef} className="hero__cta hero__cta--primary">
-            Get in touch
-          </a>
-          <a
-            href="https://linkedin.com/in/jaysahastrabudhe"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hero__cta hero__cta--ghost"
-          >
-            LinkedIn
-          </a>
-        </div>
       </div>
       <ul className="hero__meta">
         {META_ITEMS.map(item => (

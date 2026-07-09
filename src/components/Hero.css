@@ -201,3 +201,31 @@
     margin-top: var(--space-block);
   }
 }
+
+/* ---------- Desktop Side-by-Side (No text overlapping the photo) ---------- */
+@media (min-width: 769px) {
+  .hero__stage {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+  }
+  .hero__content {
+    flex: 1;
+    max-width: 58%;
+    position: relative;
+    z-index: 2;
+  }
+  .hero__figure {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    width: clamp(280px, 32vw, 420px);
+    margin: 0;
+    z-index: 1;
+    flex-shrink: 0;
+  }
+  .hero__heading {
+    max-width: 14ch;
+  }
+}
