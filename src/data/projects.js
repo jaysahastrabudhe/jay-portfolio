@@ -1,34 +1,3 @@
-export const githubProjects = [
-  {
-    name: 'le-alumni-platform',
-    desc: 'Alumni networking and mentorship platform for Let\'s Enterprise graduates connecting learners with industry professionals.',
-    lang: 'TypeScript',
-    langColor: '#3178c6',
-    url: 'https://github.com/jaysahastrabudhe/le-alumni-platform',
-  },
-  {
-    name: 'hexaco-personality-test',
-    desc: 'Web implementation of the HEXACO personality assessment with visualised results and downloadable trait reports.',
-    lang: 'HTML',
-    langColor: '#e34c26',
-    url: 'https://github.com/jaysahastrabudhe/hexaco-personality-test',
-  },
-  {
-    name: 'marketing-funnel-dashboard',
-    desc: 'Unified analytics dashboard connecting Meta Ads to client lead writebacks, built on Vite + Vercel + Neon Postgres.',
-    lang: 'TypeScript',
-    langColor: '#3178c6',
-    url: 'https://github.com/jaysahastrabudhe/marketing-funnel-dashboard',
-  },
-  {
-    name: 'le-admission-portal',
-    desc: 'BBA admissions portal with multi-step application flow, interviewer feedback nodes, and Supabase backend.',
-    lang: 'JavaScript',
-    langColor: '#f1e05a',
-    url: 'https://github.com/jaysahastrabudhe/le-admission-portal',
-  },
-]
-
 export const webProjects = [
   {
     name: 'Verve Nexus',

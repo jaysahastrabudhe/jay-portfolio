@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { animate, stagger, scrambleText, enterOnce, createTimeline } from '../lib/anime'
 import { useAnimeScope } from '../lib/useAnimeScope'
-import { webProjects, githubProjects, liPosts } from '../data/projects'
+import { webProjects, liPosts } from '../data/projects'
 import './Portfolio.css'
 
 function GitHubIcon() {
@@ -154,13 +154,13 @@ export default function Portfolio() {
     const mktHeading = root.querySelector('.portfolio__col-heading--mkt')
     const screenshotTiles = root.querySelectorAll('.portfolio__screenshot-tile')
     const campaignTiles = root.querySelectorAll('.portfolio__campaign-tile')
-    const repoTiles = root.querySelectorAll('.portfolio__repo-tile')
-    const repoGrid = root.querySelector('.portfolio__repo-grid')
-    const repoNames = root.querySelectorAll('.portfolio__repo-name')
+    
+    
+    
     const mktCards = root.querySelectorAll('.portfolio__mkt-card')
 
     if (self.matches.reduce) {
-      animate([eyebrow, heading, cliContainer, devHeading, mktHeading, ...screenshotTiles, ...campaignTiles, ...repoTiles, ...mktCards], {
+      animate([eyebrow, heading, cliContainer, devHeading, mktHeading, ...screenshotTiles, ...campaignTiles,  ...mktCards], {
         opacity: [0, 1],
         duration: 300,
         ease: 'linear',
@@ -205,15 +205,6 @@ export default function Portfolio() {
       ease: 'outCubic',
       delay: stagger(80),
       autoplay: enterOnce(root, 20),
-    })
-
-    animate(repoTiles, {
-      opacity: [0, 1],
-      translateY: [36, 0],
-      duration: 650,
-      ease: 'outCubic',
-      delay: stagger(80),
-      autoplay: enterOnce(repoGrid || root, 20),
     })
 
     animate(mktCards, {
@@ -312,27 +303,7 @@ export default function Portfolio() {
               ))}
             </div>
 
-            <div className="portfolio__repo-grid">
-              {githubProjects.map(p => (
-                <a
-                  key={p.name}
-                  href={p.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="portfolio__repo-tile"
-                  aria-label={p.name}
-                >
-                  <div className="portfolio__repo-header">
-                    <span className="portfolio__repo-dot" />
-                    <span className="portfolio__repo-dot" />
-                    <span className="portfolio__repo-dot" />
-                    <GitHubIcon />
-                  </div>
-                  <span className="portfolio__repo-name">{p.name}</span>
-                  <p className="portfolio__repo-desc">{p.desc}</p>
-                </a>
-              ))}
-            </div>
+
           </div>
 
           {/* Right Column: Marketing Portfolio */}
