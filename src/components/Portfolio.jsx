@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { animate, stagger, scrambleText, enterOnce, createTimeline } from '../lib/anime'
 import { useAnimeScope } from '../lib/useAnimeScope'
-import { webProjects, liPosts } from '../data/projects'
+import { webProjects } from '../data/projects'
 import './Portfolio.css'
 
 function GitHubIcon() {
@@ -157,10 +157,10 @@ export default function Portfolio() {
     
     
     
-    const mktCards = root.querySelectorAll('.portfolio__mkt-card')
+    
 
     if (self.matches.reduce) {
-      animate([eyebrow, heading, cliContainer, devHeading, mktHeading, ...screenshotTiles, ...campaignTiles,  ...mktCards], {
+      animate([eyebrow, heading, cliContainer, devHeading, mktHeading, ...screenshotTiles, ...campaignTiles,  ], {
         opacity: [0, 1],
         duration: 300,
         ease: 'linear',
@@ -207,14 +207,7 @@ export default function Portfolio() {
       autoplay: enterOnce(root, 20),
     })
 
-    animate(mktCards, {
-      opacity: [0, 1],
-      translateY: [36, 0],
-      duration: 650,
-      ease: 'outCubic',
-      delay: stagger(80),
-      autoplay: enterOnce(root, 20),
-    })
+
 
 
   })
@@ -313,16 +306,7 @@ export default function Portfolio() {
               ))}
             </div>
 
-            {/* LinkedIn growth metrics */}
-            <div className="portfolio__mkt-grid">
-              {liPosts.map((post, i) => (
-                <article key={i} className="portfolio__mkt-card">
-                  <p className="portfolio__mkt-tag">{post.tag}</p>
-                  <p className="portfolio__mkt-text">{post.text}</p>
-                  <p className="portfolio__mkt-engagement">{post.reactions}</p>
-                </article>
-              ))}
-            </div>
+
           </div>
 
         </div>
