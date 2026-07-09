@@ -216,15 +216,7 @@ export default function Portfolio() {
       autoplay: enterOnce(root, 20),
     })
 
-    if (repoNames.length > 0) {
-      animate(repoNames, {
-        textContent: scrambleText({ chars: 'uppercase' }),
-        duration: 600,
-        ease: 'outQuad',
-        delay: stagger(80),
-        autoplay: enterOnce(repoGrid || root, 20),
-      })
-    }
+
   })
 
   return (
