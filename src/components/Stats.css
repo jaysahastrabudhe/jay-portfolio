@@ -68,10 +68,9 @@
 
 .stats__suffix {
   font-family: var(--font-mono);
-  font-size: 0.45em;
+  font-size: 0.75em;
   font-weight: var(--fw-stat);
   color: var(--revenue);
-  vertical-align: super;
   margin-left: 0.05em;
 }
 
