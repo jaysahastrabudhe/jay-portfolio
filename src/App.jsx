@@ -10,12 +10,12 @@ const navigation = [
 ]
 
 const journey = [
-  { year: '2021', tag: '@systems', title: 'Technical foundations', text: 'Started solving business problems through software, automation, web scraping and data analysis.' },
-  { year: '2022', tag: '@macmerise', title: 'Creativity met commerce', text: 'Led social creative, production and campaign planning for culture-led product launches and brand partnerships.' },
-  { year: '2023', tag: '@growth', title: 'From content to growth', text: 'Built organic acquisition systems for Nirva Health and sharpened the link between audience, message and conversion.' },
-  { year: '2024', tag: '@builder', title: 'The stack got deeper', text: 'Shipped React applications, commerce platforms, payment systems, database workflows and performance-led websites.' },
-  { year: '2025', tag: '@leadership', title: 'Leading the function', text: 'Ran social and digital marketing at FullHouse, turning strategy, creative and paid media into one accountable operation.' },
-  { year: '2026', tag: '@operator', title: 'Building accountable growth', text: 'Now combining performance marketing, AI workflows and full-stack engineering to make every growth input measurable.' },
+  { year: '2021', tag: '@systems', title: 'Technical foundations', text: 'Started solving business problems through software, automation, web scraping and data analysis.', image: '/screenshot-jda.png' },
+  { year: '2022', tag: '@macmerise', title: 'Creativity met commerce', text: 'Led social creative, production and campaign planning for culture-led product launches and brand partnerships.', image: '/jay-hero.jpg' },
+  { year: '2023', tag: '@growth', title: 'From content to growth', text: 'Built organic acquisition systems for Nirva Health and sharpened the link between audience, message and conversion.', image: '/screenshot-beliive.png' },
+  { year: '2024', tag: '@builder', title: 'The stack got deeper', text: 'Shipped React applications, commerce platforms, payment systems, database workflows and performance-led websites.', image: '/screenshot-vervefx.png' },
+  { year: '2025', tag: '@leadership', title: 'Leading the function', text: 'Ran social and digital marketing at FullHouse, turning strategy, creative and paid media into one accountable operation.', image: '/slides/slide-4.jpg' },
+  { year: '2026', tag: '@operator', title: 'Building accountable growth', text: 'Now combining performance marketing, AI workflows and full-stack engineering to make every growth input measurable.', image: '/slides/slide-1.jpg' },
 ]
 
 const projects = [
@@ -80,6 +80,40 @@ export default function App() {
   }, [])
 
   useEffect(() => {
+    let frame
+    const updateScrollScenes = () => {
+      const hero = document.querySelector('.hero')
+      const work = document.querySelector('.work')
+
+      if (hero) {
+        const rect = hero.getBoundingClientRect()
+        const distance = Math.max(1, hero.offsetHeight - window.innerHeight)
+        const progress = Math.min(1, Math.max(0, -rect.top / distance))
+        hero.style.setProperty('--hero-p', progress.toFixed(4))
+      }
+
+      if (work) {
+        const rect = work.getBoundingClientRect()
+        const distance = Math.max(1, work.offsetHeight - window.innerHeight)
+        const progress = Math.min(1, Math.max(0, -rect.top / distance))
+        work.style.setProperty('--work-p', progress.toFixed(4))
+      }
+    }
+    const onScroll = () => {
+      cancelAnimationFrame(frame)
+      frame = requestAnimationFrame(updateScrollScenes)
+    }
+    updateScrollScenes()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+    return () => {
+      cancelAnimationFrame(frame)
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
+  }, [])
+
+  useEffect(() => {
     document.body.classList.toggle('menu-open', menuOpen)
     return () => document.body.classList.remove('menu-open')
   }, [menuOpen])
@@ -108,18 +142,30 @@ export default function App() {
 
       <main id="top">
         <section className="hero">
-          <div className="hero__kicker">Growth strategy × software engineering</div>
-          <h1 data-reveal>Growth,<br /><em>engineered</em><br />differently.</h1>
-          <div className="hero__bottom" data-reveal>
-            <p>I build the campaigns, products and systems that turn attention into accountable revenue.</p>
-            <div className="hero__portrait"><img src="/jay-hero.jpg" alt="Jay Sahastrabudhe" /><span>Pune, India · 2026</span></div>
-            <div className="hero__numbers">
-              <strong>15M+</strong><span>views generated</span>
-              <strong>5+</strong><span>years building growth</span>
+          <div className="hero__sticky">
+            <div className="hero__image-stage"><img src="/jay-hero.jpg" alt="Jay Sahastrabudhe" /></div>
+            <div className="hero__opening">
+              <span>JAY SAHASTRABUDHE®</span>
+              <strong>THE GROWTH<br />OPERATOR.</strong>
+              <small>Scroll to enter ↓</small>
             </div>
-          </div>
-          <div className="hero__rail" aria-hidden="true">
-            {['Strategist', 'Builder', 'Operator', 'Creative', 'Technical'].map(word => <span key={word}>{word}</span>)}
+            <div className="hero__kicker">Growth strategy × software engineering</div>
+            <h1>Growth,<br /><em>engineered</em><br />differently.</h1>
+            <div className="hero__bottom">
+              <p>I build the campaigns, products and systems that turn attention into accountable revenue.</p>
+              <div className="hero__numbers">
+                <strong>15M+</strong><span>views generated</span>
+                <strong>5+</strong><span>years building growth</span>
+              </div>
+            </div>
+            <div className="hero__client-strip" aria-hidden="true">
+              <div><img src="/screenshot-vervefx.png" alt="" /><span>Products</span></div>
+              <div><img src="/slides/slide-1.jpg" alt="" /><span>Performance</span></div>
+              <div><img src="/screenshot-jawandrop.png" alt="" /><span>Commerce</span></div>
+            </div>
+            <div className="hero__rail" aria-hidden="true">
+              {['Strategist', 'Builder', 'Operator', 'Creative', 'Technical'].map(word => <span key={word}>{word}</span>)}
+            </div>
           </div>
         </section>
 
@@ -133,6 +179,7 @@ export default function App() {
             {journey.map(item => (
               <article className="journey-card" key={item.year} data-reveal>
                 <div className="journey-card__top"><span>{item.tag}</span><b>{item.year}</b></div>
+                <div className="journey-card__image"><img src={item.image} alt="" /></div>
                 <h3>{item.title}</h3><p>{item.text}</p><div className="journey-card__number">{item.year.slice(-2)}</div>
               </article>
             ))}
@@ -140,22 +187,24 @@ export default function App() {
         </section>
 
         <section className="work" id="work">
-          <div className="section-label section-label--light">Selected work</div>
-          <div className="section-intro section-intro--light" data-reveal>
-            <h2>Built to look sharp.<br />Built to <em>perform.</em></h2>
-            <p>Products and platforms where visual character, technical execution and business utility share the same brief.</p>
-          </div>
-          <div className="project-list">
-            {projects.map(project => (
-              <a className="project-card" key={project.name} href={project.url} target="_blank" rel="noreferrer" data-reveal>
-                <div className="project-card__meta"><span>{project.number}</span><span>{project.type}</span><span><Arrow /></span></div>
-                <div className="project-card__visual"><img src={project.image} alt="" /></div>
-                <div className="project-card__copy">
-                  <h3>{project.name}</h3><p>{project.description}</p>
-                  <div>{project.tags.map(tag => <span key={tag}>{tag}</span>)}</div>
-                </div>
-              </a>
-            ))}
+          <div className="work__sticky">
+            <div className="section-label section-label--light">Selected work · scroll to explore</div>
+            <div className="section-intro section-intro--light">
+              <h2>Built to look sharp.<br />Built to <em>perform.</em></h2>
+              <p>Products and platforms where visual character, technical execution and business utility share the same brief.</p>
+            </div>
+            <div className="project-list">
+              {projects.map(project => (
+                <a className="project-card" key={project.name} href={project.url} target="_blank" rel="noreferrer">
+                  <div className="project-card__meta"><span>{project.number}</span><span>{project.type}</span><span><Arrow /></span></div>
+                  <div className="project-card__visual"><img src={project.image} alt="" /></div>
+                  <div className="project-card__copy">
+                    <h3>{project.name}</h3><p>{project.description}</p>
+                    <div>{project.tags.map(tag => <span key={tag}>{tag}</span>)}</div>
+                  </div>
+                </a>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -165,6 +214,17 @@ export default function App() {
             {campaignProof.map(([value, label]) => <div className="proof__item" key={label} data-reveal><strong>{value}</strong><span>{label}</span></div>)}
           </div>
           <p className="proof__note">Selected results across FullHouse, Macmerise and performance campaigns.</p>
+        </section>
+
+        <section className="field-notes" aria-label="Performance campaign snapshots">
+          <div className="field-notes__title"><span>Inside the work</span><h2>Campaign systems,<br /><em>in motion.</em></h2></div>
+          <div className="field-notes__marquee">
+            <div>
+              {[1, 2, 3, 4, 5, 6, 7, 8, 1, 2].map((slide, index) => (
+                <figure key={`${slide}-${index}`}><img src={`/slides/slide-${slide}.jpg`} alt={`Campaign performance snapshot ${slide}`} /></figure>
+              ))}
+            </div>
+          </div>
         </section>
 
         <section className="services" id="services">
