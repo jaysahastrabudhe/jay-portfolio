@@ -1,30 +1,7 @@
 import { animate, stagger, enterOnce, createTimeline } from '../lib/anime'
 import { useAnimeScope } from '../lib/useAnimeScope'
-import { webProjects } from '../data/projects'
+import { marketingCaseStudies, webProjects } from '../data/projects'
 import './Portfolio.css'
-
-const marketingCampaigns = [
-  {
-    name: "Let's Enterprise",
-    role: "Meta Ads, Lead Gen & Growth Manager",
-    desc: "Optimized full-funnel Meta Ads lead generation campaigns. Structured audience definitions and visual assets, achieving 6x ROI and 15M+ views across campaigns."
-  },
-  {
-    name: "FullHouse Entertainment",
-    role: "Head of Department — Social Media & Marketing",
-    desc: "Directed paid performance and brand campaigns across Meta, Google, LinkedIn, and YouTube. Allocated media budgets and managed creative content teams."
-  },
-  {
-    name: "Rom Guruji (Founder)",
-    role: "YouTube Brand & SEO Strategy",
-    desc: "Built and scaled a search-optimized YouTube tech channel to 23,000+ subscribers and 15M+ views. Managed scripts, editing, and thumbnail A/B testing."
-  },
-  {
-    name: "Nirva Health (YC '21)",
-    role: "Organic Growth Expert",
-    desc: "Implemented organic lead generation, search ranking, and social content strategies. Drove +20% traffic growth and built client lead qualification systems."
-  }
-]
 
 export default function Portfolio() {
   const ref = useAnimeScope(self => {
@@ -119,12 +96,28 @@ export default function Portfolio() {
             
             {/* Core Marketing Campaigns */}
             <div className="portfolio__campaign-list">
-              {marketingCampaigns.map(c => (
-                <div key={c.name} className="portfolio__campaign-tile">
-                  <span className="portfolio__campaign-org">{c.name}</span>
+              {marketingCaseStudies.map(c => (
+                <article key={c.client} className="portfolio__campaign-tile">
+                  <span className="portfolio__campaign-org">{c.client}</span>
+                  <h4 className="portfolio__campaign-title">{c.title}</h4>
                   <span className="portfolio__campaign-role">{c.role}</span>
-                  <p className="portfolio__campaign-desc">{c.desc}</p>
-                </div>
+                  <p className="portfolio__campaign-desc">{c.summary}</p>
+                  <ul className="portfolio__campaign-contributions">
+                    {c.contributions.map(item => <li key={item}>{item}</li>)}
+                  </ul>
+                  {c.proof && <p className="portfolio__campaign-proof">{c.proof}</p>}
+                  {c.metrics && <div className="portfolio__campaign-metrics">{c.metrics.map(metric => <span key={metric}>{metric}</span>)}</div>}
+                  {c.context && <p className="portfolio__campaign-context">{c.context}</p>}
+                  {c.links && (
+                    <div className="portfolio__campaign-links">
+                      {c.links.map(link => (
+                        <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer">
+                          {link.label}<span aria-hidden="true"> ↗</span>
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </article>
               ))}
             </div>
           </div>

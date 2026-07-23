@@ -60,3 +60,63 @@ export const liPosts = [
 ]
 
 export const slides = []
+
+export const marketingCaseStudies = [
+  {
+    client: 'Macmerise',
+    title: 'Culture-led product campaigns',
+    role: 'Campaign strategy, production & social growth',
+    summary: 'Planned and produced social-first campaigns spanning entertainment partnerships, product launches, community stories and giveaway mechanics.',
+    contributions: ['Campaign planning and ideation', 'Shoot direction and production', 'Editing and social distribution', 'Sales-led campaign creative'],
+    metrics: ['3.33M Shades of Love plays', '114 giveaway comments', '14.7K Anything Skin plays'],
+    links: [
+      { label: 'Black Panther x INOX', url: 'https://www.instagram.com/reel/ClDLjXUtZL8/' },
+      { label: 'Shades of Love', url: 'https://www.instagram.com/reel/Cn_Mxyuq5cu/' },
+      { label: 'Sunburn x Alan Walker', url: 'https://www.instagram.com/reel/Ci7mgVfvL1M/' },
+      { label: 'Anything Skin', url: 'https://www.instagram.com/reel/CiK5ovsOZSb/' },
+      { label: 'iPhone giveaway', url: 'https://www.instagram.com/p/CgWrhIHv92s/' },
+      { label: 'Giveaway launch', url: 'https://www.instagram.com/reel/CfbYe5MtAF3/' },
+    ],
+  },
+  {
+    client: 'Nirva Health',
+    title: 'Organic growth for a subscription health platform',
+    role: 'Organic Growth Expert & Social Media Specialist',
+    summary: 'Built organic content and audience growth around conversion to Nirva’s subscription model, extending the content engine through podcast planning and training for doctors.',
+    contributions: ['Organic acquisition content', 'Doctor podcast planning and training', 'Social audience development', 'Subscription-focused messaging'],
+    proof: '20% website traffic growth during the engagement',
+    links: [{ label: 'Visit Nirva Health', url: 'https://www.nirvahealth.com/' }],
+  },
+  {
+    client: 'Sitashree Laxminarayan',
+    title: 'End-to-end account and event content',
+    role: 'Account management, production & live coverage',
+    summary: 'Managed delivery from pre-production through publishing, including shoot planning, vendor coordination, on-floor direction, event coverage and final Reel edits.',
+    contributions: ['Women’s Day shoot and edit', 'INDUS stall-build supervision', 'Diwali production management', 'Live posting and coordination'],
+    metrics: ['121.9K Women’s Day plays', '181.7K INDUS plays', '250.3K Diwali plays'],
+    links: [
+      { label: 'Women’s Day', url: 'https://www.instagram.com/reel/DG69jZxo2tn/' },
+      { label: 'INDUS visit', url: 'https://www.instagram.com/reel/DE6wUVat782/' },
+      { label: 'Diwali campaign', url: 'https://www.instagram.com/reel/DBQGdegiUa_/' },
+    ],
+  },
+  {
+    client: 'FullHouse Entertainment',
+    title: 'Pitches, strategy decks & award case studies',
+    role: 'Head of Department—Social Media & Digital Marketing',
+    summary: 'Developed new-business pitch narratives and transformed campaign performance into clear, awards-ready case studies, including Saj Sampada and Krsnaa Diagnostics.',
+    contributions: ['Brand and competitor analysis', 'B2C and B2B campaign roadmaps', 'Creative campaign platforms', 'Awards narrative and proof'],
+    proof: 'Krsnaa campaigns: 15.4M+ impressions and 9.9M+ views',
+    metrics: ['75K+ reactions', '1K+ shares', '₹0.07 average CPV'],
+  },
+  {
+    client: 'Kotibhaskar Group',
+    title: 'Performance marketing for premium real estate',
+    role: 'Lead generation strategy & optimisation',
+    summary: 'Ran lead-generation campaigns for a Pune real-estate portfolio, balancing acquisition cost with the quality needed for high-consideration residential sales.',
+    contributions: ['Meta lead generation', 'Audience and creative optimisation', 'CPL monitoring', 'Premium inventory lead flow'],
+    proof: 'Cost per lead as low as ₹117',
+    context: 'Campaigns supported client inventory valued at approximately ₹3 crore.',
+    links: [{ label: 'View Kotibhaskar Group', url: 'https://www.instagram.com/kotibhaskargroup/' }],
+  },
+]

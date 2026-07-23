@@ -140,6 +140,15 @@
   margin-bottom: 0.25rem;
 }
 
+.portfolio__campaign-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
+  line-height: 1.15;
+  font-weight: var(--fw-display);
+  color: var(--panel-text);
+  margin-bottom: 0.6rem;
+}
+
 .portfolio__campaign-role {
   display: block;
   font-family: var(--font-mono);
@@ -157,4 +166,91 @@
   font-weight: var(--fw-body);
   line-height: var(--leading-body);
   color: var(--panel-muted);
+}
+
+.portfolio__campaign-contributions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.45rem 1rem;
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+}
+
+.portfolio__campaign-contributions li {
+  position: relative;
+  padding-left: 0.9rem;
+  font-family: var(--font-body);
+  font-size: var(--text-eyebrow);
+  line-height: 1.45;
+  color: var(--panel-muted);
+}
+
+.portfolio__campaign-contributions li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--terminal);
+}
+
+.portfolio__campaign-proof {
+  margin-top: 1rem;
+  padding: 0.8rem 1rem;
+  border-left: 2px solid var(--terminal);
+  background: color-mix(in oklch, var(--terminal) 7%, transparent);
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+  line-height: 1.45;
+  color: var(--panel-text);
+}
+
+.portfolio__campaign-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+
+.portfolio__campaign-metrics span {
+  border: 1px solid var(--panel-rule);
+  border-radius: 999px;
+  padding: 0.35rem 0.65rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-eyebrow);
+  color: var(--terminal);
+}
+
+.portfolio__campaign-context {
+  margin-top: 0.7rem;
+  font-family: var(--font-body);
+  font-size: var(--text-eyebrow);
+  line-height: 1.45;
+  color: var(--panel-muted);
+}
+
+.portfolio__campaign-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 1rem;
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--panel-rule);
+}
+
+.portfolio__campaign-links a {
+  font-family: var(--font-mono);
+  font-size: var(--text-eyebrow);
+  color: var(--terminal);
+  text-decoration: none;
+}
+
+.portfolio__campaign-links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+}
+
+@media (max-width: 520px) {
+  .portfolio__campaign-contributions {
+    grid-template-columns: 1fr;
+  }
 }
