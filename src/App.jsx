@@ -44,6 +44,7 @@ export default function App() {
         <a className="availability" href="mailto:jaysahastrabudhe@gmail.com"><i /> Let’s talk</a>
         <button type="button" className="menu-button" onClick={() => setMenuOpen(value => !value)} aria-expanded={menuOpen}>{menuOpen ? 'Close' : 'Menu'} <b>{menuOpen ? '×' : '+'}</b></button>
       </header>
+      <a className="mobile-contact" href="mailto:jaysahastrabudhe@gmail.com">Let’s talk <Arrow /></a>
       <aside className={`menu-panel ${menuOpen ? 'is-open' : ''}`} aria-hidden={!menuOpen}>
         <nav>
           {navItems.map(([id, label], index) => <a href={`#${id}`} onClick={() => setMenuOpen(false)} key={id}><small>0{index + 1}</small><span>{label}</span><Arrow /></a>)}
