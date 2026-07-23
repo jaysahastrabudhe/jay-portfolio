@@ -47,3 +47,6 @@
 @media(max-width:1100px){.campaign-track{grid-template-columns:1fr 1fr}}
 @media(max-width:900px){.campaign-download{align-items:start;flex-direction:column}.nirva-brief{grid-template-columns:1fr}.nirva-brief figure{min-height:380px;aspect-ratio:16/10}}
 @media(max-width:700px){.campaign-track{grid-template-columns:1fr}.campaign-moment figure,.campaign-moment:nth-child(3n) figure{aspect-ratio:4/5}.nirva-brief figure{min-height:0;aspect-ratio:1/1}.nirva-brief__content>div{align-items:start;flex-direction:column}.contact>a.contact-email{font-size:1rem}}
+
+.document-downloads{display:grid;width:min(100%,560px);border:1px solid var(--ink);border-bottom:0}.document-downloads>a{display:flex;align-items:center;justify-content:space-between;gap:2rem;padding:1.1rem 1.2rem;border-bottom:1px solid var(--ink);background:var(--acid)}.document-downloads>a>span:first-child{display:flex;flex-direction:column;gap:.35rem}.document-downloads small{font-size:.58rem;color:rgba(17,18,23,.62);text-transform:uppercase;letter-spacing:.09em}.document-downloads>a>span:last-child{font-size:1rem}
+@media(max-width:900px){.document-downloads{width:100%}}
