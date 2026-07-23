@@ -3,7 +3,7 @@ import HeroScene from './components/HeroScene'
 import { campaignChapters, digitalProducts, recommendations } from './data/portfolio'
 import './App.css'
 
-const navItems = [['story', 'Story'], ['youtube', 'YouTube'], ['campaigns', 'Campaigns'], ['nirva', 'Nirva case'], ['products', 'Development'], ['recommendations', 'Words']]
+const navItems = [['story', 'Story'], ['now', 'Now'], ['youtube', 'YouTube'], ['campaigns', 'Campaigns'], ['nirva', 'Nirva case'], ['products', 'Development'], ['recommendations', 'Words']]
 
 const popularVideos = [
   { title: 'Samsung S21 FE Review 2023: Is It Still Worth Buying?', views: '215K views', image: '/youtube/s21-fe.jpg', href: 'https://www.youtube.com/watch?v=owqQ8hgfLWI' },
@@ -56,7 +56,7 @@ export default function App() {
         <HeroScene />
 
         <div className="credibility-rail" aria-label="Selected clients">
-          <span>Macmerise</span><span>Nirva Health</span><span>FullHouse</span><span>Sitashree Laxminarayan</span><span>Kotibhaskar</span>
+          <span>Let&apos;s Enterprise</span><span>Macmerise</span><span>Nirva Health</span><span>FullHouse</span><span>Sitashree Laxminarayan</span><span>Kotibhaskar</span>
         </div>
 
         <section className="story section-pad" id="story">
@@ -73,8 +73,27 @@ export default function App() {
           </div>
         </section>
 
+        <section className="now section-pad" id="now">
+          <p className="section-index">02 · Where am I now?</p>
+          <div className="now-lead">
+            <div>
+              <span>Let&apos;s Enterprise · Pune</span>
+              <h2 data-reveal>Building the system behind a <em>Working BBA.</em></h2>
+            </div>
+            <div data-reveal>
+              <p>Let&apos;s Enterprise pairs a recognised BBA degree with three years of real work—apprenticeships, industry projects, mentorship and a portfolio that proves what students can do.</p>
+              <a href="https://letsenterprise.in/" target="_blank" rel="noreferrer">See what LE is all about <Arrow /></a>
+            </div>
+          </div>
+          <div className="now-grid">
+            <article data-reveal><span>01 · Demand</span><h3>Campaigns built for admissions.</h3><p>Planning and building campaigns that turn student and parent interest into qualified conversations.</p></article>
+            <article data-reveal><span>02 · Infrastructure</span><h3>The complete admission system.</h3><p>Built the admission journey end to end, connecting enquiry, communication and follow-through.</p></article>
+            <article data-reveal><span>03 · Delivery</span><strong>50% → 100%</strong><h3>WhatsApp delivery rate.</h3><p>Used AI-driven template refinement to remove delivery friction and bring critical communication reliably to every lead.</p></article>
+          </div>
+        </section>
+
         <section className="youtube section-pad" id="youtube">
-          <p className="section-index section-index--light">02 · Owned media archive</p>
+          <p className="section-index section-index--light">03 · Owned media archive</p>
           <header className="youtube-head">
             <div>
               <span>Built and hosted by Jay · 2014–2025</span>
@@ -102,7 +121,7 @@ export default function App() {
 
         <section className="campaigns" id="campaigns">
           <header className="campaigns-head section-pad">
-            <p className="section-index">03 · Campaign systems</p>
+            <p className="section-index">04 · Campaign systems</p>
             <h2 data-reveal>Culture, content<br />and <em>commerce.</em></h2>
             <p data-reveal>Real campaign imagery, grouped by the client system it belonged to—not a wall of disconnected posts.</p>
           </header>
@@ -135,7 +154,7 @@ export default function App() {
         </section>
 
         <section className="nirva-study section-pad" id="nirva">
-          <p className="section-index section-index--light">04 · Nirva Health case study</p>
+          <p className="section-index section-index--light">05 · Nirva Health case study</p>
           <header className="nirva-study__head">
             <h2 data-reveal>The campaign is<br />only half the <em>system.</em></h2>
             <div data-reveal>
@@ -156,7 +175,7 @@ export default function App() {
         </section>
 
         <section className="workshop section-pad" id="workshop">
-          <p className="section-index">05 · Teaching & impact</p>
+          <p className="section-index">06 · Teaching & impact</p>
           <div className="workshop-grid">
             <a className="workshop-media" href="https://www.linkedin.com/feed/update/urn:li:activity:7426147112528297984/" target="_blank" rel="noreferrer" data-reveal>
               <video src="/workshops/deasraa-workshop.mp4" poster="/workshops/deasraa-workshop.jpg" muted loop playsInline autoPlay preload="metadata" aria-label="DeAsraa women entrepreneurs digital marketing workshop recap" />
@@ -177,7 +196,7 @@ export default function App() {
         </section>
 
         <section className="products section-pad" id="products">
-          <p className="section-index section-index--light">06 · Development portfolio</p>
+          <p className="section-index section-index--light">07 · Development portfolio</p>
           <header className="products-head"><h2 data-reveal>Strategy that ships<br />as working <em>product.</em></h2><p data-reveal>I do more than plan the funnel. I design and build the interfaces, conversion paths and technical systems that make the growth idea real.</p></header>
           <div className="product-grid">
             {digitalProducts.map((product, index) => (
@@ -191,7 +210,7 @@ export default function App() {
         </section>
 
         <section className="recommendations section-pad" id="recommendations">
-          <p className="section-index section-index--light">07 · LinkedIn recommendations · All 4</p>
+          <p className="section-index section-index--light">08 · LinkedIn recommendations · All 4</p>
           <div className="recommendations-head"><h2 data-reveal>The work,<br />in their <em>words.</em></h2><a href="https://www.linkedin.com/in/jaysahastrabudhe/details/recommendations/?detailScreenTabIndex=0" target="_blank" rel="noreferrer">View all on LinkedIn <Arrow /></a></div>
           <div className="quote-grid">
             {recommendations.map((item, index) => (
