@@ -126,7 +126,7 @@ export default function App() {
           ))}
           <div className="campaign-download section-pad">
             <div><span>FullHouse India · Client pitch</span><h3>Strategy, structured<br />to be <em>buyable.</em></h3></div>
-            <a href="/downloads/jay-fullhouse-client-pitch.pdf" download="Jay-Sahastrabudhe-FullHouse-Client-Pitch.pdf"><span>Download the pitch · PDF</span><Arrow /></a>
+            <a href="https://raw.githubusercontent.com/jaysahastrabudhe/jay-portfolio/main/downloads/jay-fullhouse-client-pitch.pdf" download="Jay-Sahastrabudhe-FullHouse-Client-Pitch.pdf"><span>Download the pitch · PDF</span><Arrow /></a>
           </div>
         </section>
 
