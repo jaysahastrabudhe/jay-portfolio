@@ -188,7 +188,7 @@ export default function App() {
         </section>
 
         <section className="recommendations section-pad" id="recommendations">
-          <p className="section-index section-index--light">06 · LinkedIn recommendations · All 2</p>
+          <p className="section-index section-index--light">06 · LinkedIn recommendations · All 4</p>
           <div className="recommendations-head"><h2 data-reveal>The work,<br />in their <em>words.</em></h2><a href="https://www.linkedin.com/in/jaysahastrabudhe/details/recommendations/?detailScreenTabIndex=0" target="_blank" rel="noreferrer">View all on LinkedIn <Arrow /></a></div>
           <div className="quote-grid">
             {recommendations.map((item, index) => (

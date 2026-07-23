@@ -38,6 +38,16 @@ export const digitalProducts = [
 
 export const recommendations = [
   {
+    quote: 'Jay is a fantastic asset to our team. His creative ideas and expertise in digital media are invaluable. He has a great eye for detail and always delivers high-quality work. It’s a pleasure working with someone who is so passionate about their craft.',
+    name: 'Dr. Godmi Tresa Sunny',
+    href: 'https://www.linkedin.com/in/jaysahastrabudhe/details/recommendations/?detailScreenTabIndex=0',
+  },
+  {
+    quote: 'Jay’s creativity and passion for social media shined through in their work, and he always brought innovative ideas to life while consistently going above and beyond. He’s a true team player who brightened our team with his positive attitude.',
+    name: 'Yash Khatri',
+    href: 'https://www.linkedin.com/in/jaysahastrabudhe/details/recommendations/?detailScreenTabIndex=0',
+  },
+  {
     quote: 'Jay has a rare ability to balance strategy with execution. He blends creativity with data-driven thinking and consistently delivers impactful results. Proactive, detail-oriented and dependable, he guides teams with clarity and confidence.',
     name: 'Sayli Chaudhari',
     href: 'https://in.linkedin.com/in/sayli-chaudhari-48853576',
