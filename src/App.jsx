@@ -3,7 +3,14 @@ import HeroScene from './components/HeroScene'
 import { campaignChapters, digitalProducts, recommendations } from './data/portfolio'
 import './App.css'
 
-const navItems = [['story', 'Story'], ['campaigns', 'Campaigns'], ['nirva', 'Nirva case'], ['products', 'Development'], ['recommendations', 'Words']]
+const navItems = [['story', 'Story'], ['youtube', 'YouTube'], ['campaigns', 'Campaigns'], ['nirva', 'Nirva case'], ['products', 'Development'], ['recommendations', 'Words']]
+
+const popularVideos = [
+  { title: 'Samsung S21 FE Review 2023: Is It Still Worth Buying?', views: '215K views', image: '/youtube/s21-fe.jpg', href: 'https://www.youtube.com/watch?v=owqQ8hgfLWI' },
+  { title: 'Should You Buy Pixel 6A In 2023? All Pros and Cons After 5 Months!', views: '190K views', image: '/youtube/pixel-6a-pros-cons.jpg', href: 'https://www.youtube.com/watch?v=maPQIuvYgkA' },
+  { title: 'Nothing Phone 1 or Pixel 6A? Which One Should You Buy In 2023', views: '158K views', image: '/youtube/nothing-vs-pixel.jpg', href: 'https://www.youtube.com/watch?v=RQ_Wtk2cW-k' },
+  { title: 'Pixel 6A in 2023: Is It Still a Smart Buy?', views: '120K views', image: '/youtube/pixel-6a-hidden-gems.jpg', href: 'https://www.youtube.com/watch?v=-VaEmol3cnk' },
+]
 
 function Arrow() {
   return <span aria-hidden="true">↗</span>
@@ -40,7 +47,7 @@ export default function App() {
       <aside className={`menu-panel ${menuOpen ? 'is-open' : ''}`} aria-hidden={!menuOpen}>
         <nav>
           {navItems.map(([id, label], index) => <a href={`#${id}`} onClick={() => setMenuOpen(false)} key={id}><small>0{index + 1}</small><span>{label}</span><Arrow /></a>)}
-          <a href="#contact" onClick={() => setMenuOpen(false)}><small>06</small><span>Contact</span><Arrow /></a>
+          <a href="#contact" onClick={() => setMenuOpen(false)}><small>07</small><span>Contact</span><Arrow /></a>
         </nav>
       </aside>
 
@@ -65,9 +72,36 @@ export default function App() {
           </div>
         </section>
 
+        <section className="youtube section-pad" id="youtube">
+          <p className="section-index section-index--light">02 · Owned media archive</p>
+          <header className="youtube-head">
+            <div>
+              <span>Built and hosted by Jay · 2014–2025</span>
+              <h2 data-reveal>Four years of making<br />tech <em>understandable.</em></h2>
+            </div>
+            <p data-reveal>Rom Guruji was my owned-media laboratory: scripting, presenting, production, thumbnails, search-led publishing and audience building—run end to end.</p>
+          </header>
+          <div className="youtube-stats">
+            <div><strong>22.5K</strong><span>subscribers</span></div>
+            <div><strong>727</strong><span>published videos</span></div>
+            <div><strong>5.93M</strong><span>lifetime channel views</span></div>
+            <a href="https://www.youtube.com/@RomGuruji/videos" target="_blank" rel="noreferrer"><span>Explore the archive</span><Arrow /></a>
+          </div>
+          <div className="youtube-grid">
+            {popularVideos.map((video, index) => (
+              <a href={video.href} target="_blank" rel="noreferrer" className="youtube-card" key={video.href} data-reveal>
+                <figure><img src={video.image} alt={`${video.title} thumbnail`} loading="lazy" /><i aria-hidden="true">▶</i></figure>
+                <div><span>0{index + 1} · Most popular</span><strong>{video.views}</strong></div>
+                <h3>{video.title}</h3>
+              </a>
+            ))}
+          </div>
+          <small className="youtube-note">Public channel totals and Popular-tab ranking captured July 2026.</small>
+        </section>
+
         <section className="campaigns" id="campaigns">
           <header className="campaigns-head section-pad">
-            <p className="section-index">02 · Campaign systems</p>
+            <p className="section-index">03 · Campaign systems</p>
             <h2 data-reveal>Culture, content<br />and <em>commerce.</em></h2>
             <p data-reveal>Real campaign imagery, grouped by the client system it belonged to—not a wall of disconnected posts.</p>
           </header>
@@ -93,7 +127,7 @@ export default function App() {
         </section>
 
         <section className="nirva-study section-pad" id="nirva">
-          <p className="section-index section-index--light">03 · Nirva Health case study</p>
+          <p className="section-index section-index--light">04 · Nirva Health case study</p>
           <header className="nirva-study__head">
             <h2 data-reveal>The campaign is<br />only half the <em>system.</em></h2>
             <div data-reveal>
@@ -140,7 +174,7 @@ export default function App() {
         </section>
 
         <section className="commercial section-pad">
-          <p className="section-index">04 · Commercial storytelling</p>
+          <p className="section-index">05 · Commercial storytelling</p>
           <div className="commercial-grid">
             <article data-reveal>
               <div className="commercial-mark" aria-hidden="true"><strong>15.4M+</strong><span>impressions</span></div>
@@ -154,7 +188,7 @@ export default function App() {
         </section>
 
         <section className="products section-pad" id="products">
-          <p className="section-index section-index--light">05 · Development portfolio</p>
+          <p className="section-index section-index--light">06 · Development portfolio</p>
           <header className="products-head"><h2 data-reveal>Strategy that ships<br />as working <em>product.</em></h2><p data-reveal>I do more than plan the funnel. I design and build the interfaces, conversion paths and technical systems that make the growth idea real.</p></header>
           <div className="product-grid">
             {digitalProducts.map((product, index) => (
@@ -168,7 +202,7 @@ export default function App() {
         </section>
 
         <section className="capabilities section-pad">
-          <p className="section-index">06 · Capability model</p>
+          <p className="section-index">07 · Capability model</p>
           <h2 data-reveal>Think it. Make it.<br /><em>Measure it.</em></h2>
           <div className="capability-grid">
             <article><span>01</span><h3>Think</h3><p>Positioning, campaign strategy, acquisition and the commercial story.</p></article>
@@ -178,7 +212,7 @@ export default function App() {
         </section>
 
         <section className="recommendations section-pad" id="recommendations">
-          <p className="section-index section-index--light">07 · LinkedIn recommendations</p>
+          <p className="section-index section-index--light">08 · LinkedIn recommendations</p>
           <h2 data-reveal>The work,<br />in their <em>words.</em></h2>
           <div className="quote-grid">
             {recommendations.map((item, index) => (
