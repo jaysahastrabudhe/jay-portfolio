@@ -87,7 +87,7 @@ export default function App() {
           </div>
           <div className="now-grid">
             <article data-reveal><span>01 · Demand</span><h3>Campaigns built for admissions.</h3><p>Planning and building campaigns that turn student and parent interest into qualified conversations.</p></article>
-            <article data-reveal><span>02 · Infrastructure</span><h3>The complete admission system.</h3><p>Built the admission journey end to end, connecting enquiry, communication and follow-through.</p></article>
+            <article data-reveal><span>02 · Infrastructure</span><h3>Developed the admission dashboard.</h3><p>Designed and built the software used to manage admissions activity and follow-through.</p></article>
             <article data-reveal><span>03 · Delivery</span><strong>50% → 100%</strong><h3>WhatsApp delivery rate.</h3><p>Used AI-driven template refinement to remove delivery friction and bring critical communication reliably to every lead.</p></article>
           </div>
         </section>
