@@ -37,7 +37,7 @@ export default function HeroScene() {
 
         <div className="hero-teasers" aria-hidden="true">
           <figure><img src="/screenshot-vervefx.png" alt="" /></figure>
-          <figure><img src="/slides/slide-1.jpg" alt="" /></figure>
+          <figure><img src="/nirva/consultation.png" alt="" /></figure>
           <figure><img src="/screenshot-jawandrop.png" alt="" /></figure>
         </div>
         <div className="scroll-cue">Scroll to enter <span>↓</span></div>

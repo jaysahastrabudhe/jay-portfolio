@@ -3,7 +3,7 @@ import HeroScene from './components/HeroScene'
 import { campaignChapters, digitalProducts, recommendations } from './data/portfolio'
 import './App.css'
 
-const navItems = [['story', 'Story'], ['campaigns', 'Campaigns'], ['operations', 'Operations'], ['products', 'Products'], ['recommendations', 'Words']]
+const navItems = [['story', 'Story'], ['campaigns', 'Campaigns'], ['nirva', 'Nirva case'], ['products', 'Development'], ['recommendations', 'Words']]
 
 function Arrow() {
   return <span aria-hidden="true">↗</span>
@@ -90,23 +90,52 @@ export default function App() {
               </div>
             </article>
           ))}
-          <article className="nirva-case section-pad">
-            <div><span>Organic growth · SaaS health</span><h3>Nirva Health</h3></div>
-            <p>Built audience and organic acquisition with a clear path to subscription: conversion-led content, doctor podcast planning and offline training designed around trust.</p>
-          </article>
         </section>
 
-        <section className="operations section-pad" id="operations">
-          <p className="section-index section-index--light">03 · Growth operations</p>
-          <header>
+        <section className="nirva-study section-pad" id="nirva">
+          <p className="section-index section-index--light">03 · Nirva Health case study</p>
+          <header className="nirva-study__head">
             <h2 data-reveal>The campaign is<br />only half the <em>system.</em></h2>
-            <p data-reveal>June 2026 performance operations: acquisition, WhatsApp response, lead quality and sales handoff viewed as one connected loop.</p>
+            <div data-reveal>
+              <span>Health tech · Organic growth · CRO</span>
+              <p>For Nirva Health, growth meant connecting discovery, conversion, retention and activation—not treating content or paid media as isolated channels.</p>
+            </div>
           </header>
-          <div className="ops-metrics">
-            {[['₹113', 'cost per lead'], ['1,771', 'WhatsApp messages'], ['222', 'hot leads'], ['34', 'sales-qualified']].map(([value, label]) => <div key={label}><strong>{value}</strong><span>{label}</span></div>)}
+
+          <div className="nirva-hero" data-reveal>
+            <img src="/nirva/hero.png" alt="Nirva Health lifestyle care experience" loading="lazy" />
+            <div><span>Measured outcome</span><strong>+50%</strong><p>increase in site conversion</p></div>
           </div>
-          <div className="report-track">
-            {[1,2,3,4,5,6,7,8].map(slide => <figure key={slide}><img src={`/slides/slide-${slide}.jpg`} alt={`Growth operations report page ${slide}`} loading="lazy" /></figure>)}
+
+          <div className="nirva-system">
+            {[
+              ['01', 'Acquire', 'Published search-led articles and connected Meta ads with social content to build more efficient acquisition and reduce CAC.'],
+              ['02', 'Convert', 'Planned CRO activities across the site journey, translating audience intent into a 50% increase in conversion.'],
+              ['03', 'Retain', 'Improved the content experience to increase site retention, then developed ideas for LTV extensions beyond the first purchase.'],
+              ['04', 'Activate', 'Used a giveaway campaign as an attendance engine, increasing participation in Nirva’s health workshops.'],
+            ].map(([number, title, copy]) => (
+              <article key={title} data-reveal><span>{number}</span><h3>{title}</h3><p>{copy}</p></article>
+            ))}
+          </div>
+
+          <div className="nirva-editorial">
+            <figure data-reveal><img src="/nirva/method.png" alt="Nirva Health mobile care experience" loading="lazy" /></figure>
+            <div>
+              <p className="eyebrow">SEO publishing engine</p>
+              <h3 data-reveal>Useful health content built for discovery—and the next action.</h3>
+              <p data-reveal>Editorial planning focused on questions people were already searching for, while the site journey carried that attention toward Nirva’s consultations, subscriptions and workshops.</p>
+              <nav>
+                <a href="https://www.nirvahealth.com/blog/health-care-gap-lifestyle-prescription" target="_blank" rel="noreferrer">The healthcare gap <Arrow /></a>
+                <a href="https://www.nirvahealth.com/blog/guide-incorporate-healthy-habits-busy-work-life" target="_blank" rel="noreferrer">Healthy habits guide <Arrow /></a>
+                <a href="https://www.nirvahealth.com/blog/power-of-exercise-on-mental-health" target="_blank" rel="noreferrer">Exercise & mental health <Arrow /></a>
+              </nav>
+            </div>
+          </div>
+
+          <div className="nirva-outcomes">
+            {[['+50%', 'site conversion'], ['Higher', 'site retention'], ['Lower', 'customer acquisition cost'], ['More', 'workshop attendance']].map(([value, label]) => (
+              <div key={label}><strong>{value}</strong><span>{label}</span></div>
+            ))}
           </div>
         </section>
 
@@ -125,8 +154,8 @@ export default function App() {
         </section>
 
         <section className="products section-pad" id="products">
-          <p className="section-index section-index--light">05 · Digital products</p>
-          <header><h2 data-reveal>From campaign path<br />to working <em>product.</em></h2></header>
+          <p className="section-index section-index--light">05 · Development portfolio</p>
+          <header className="products-head"><h2 data-reveal>Strategy that ships<br />as working <em>product.</em></h2><p data-reveal>I do more than plan the funnel. I design and build the interfaces, conversion paths and technical systems that make the growth idea real.</p></header>
           <div className="product-grid">
             {digitalProducts.map((product, index) => (
               <a href={product.href} target="_blank" rel="noreferrer" key={product.name} className="product-card" data-reveal>
