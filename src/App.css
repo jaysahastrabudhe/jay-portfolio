@@ -56,6 +56,9 @@
 @media(max-width:700px){.workshop-media{aspect-ratio:4/5}.workshop-copy ul{grid-template-columns:1fr}}
 
 /* Viewport refinement: preserve the editorial desktop, compress the mobile journey. */
+.topbar{background:var(--paper);backdrop-filter:none}
+html{scroll-padding-top:72px}
+main[id],main [id],footer[id]{scroll-margin-top:72px}
 .hero-resolved a{min-height:44px;display:flex;align-items:center}.contact nav a,.contact>div>a,.contact>a.contact-email{min-height:44px;display:flex;align-items:center}.mobile-contact{display:none}
 
 @media(min-width:701px) and (max-width:900px){
@@ -67,6 +70,8 @@
 }
 
 @media(max-width:700px){
+  html{scroll-padding-top:64px}
+  main[id],main [id],footer[id]{scroll-margin-top:64px}
   .mobile-contact{position:fixed;right:var(--gutter);bottom:1rem;z-index:120;display:flex;align-items:center;gap:.75rem;min-height:48px;padding:.8rem 1rem;border:1px solid var(--ink);color:var(--ink);background:var(--acid);box-shadow:0 .7rem 2rem rgba(17,18,23,.18);font-size:.67rem;text-transform:uppercase;letter-spacing:.1em}
   .hero-word--rear{top:17%;font-size:21vw}
   .hero-word--front{right:auto;bottom:9%;font-size:19vw;-webkit-text-stroke:.75px var(--ink)}
