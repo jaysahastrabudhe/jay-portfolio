@@ -145,9 +145,8 @@ export default function App() {
             </article>
           ))}
           <div className="campaign-download section-pad">
-            <div><span>Selected documents</span><h3>Thinking you can<br /><em>take with you.</em></h3></div>
+            <div><span>Selected research</span><h3>Research you can<br /><em>take with you.</em></h3></div>
             <div className="document-downloads">
-              <a href="https://raw.githubusercontent.com/jaysahastrabudhe/jay-portfolio/main/downloads/jay-fullhouse-client-pitch.pdf" download="Jay-Sahastrabudhe-FullHouse-Client-Pitch.pdf"><span><small>FullHouse India</small>Client pitch · PDF</span><Arrow /></a>
               <a href="https://raw.githubusercontent.com/jaysahastrabudhe/jay-portfolio/main/downloads/emotional-marketing-fmcg-research-report.pdf" download="Jay-Sahastrabudhe-Emotional-Marketing-Research.pdf"><span><small>MBA research report</small>Emotional marketing & FMCG · PDF</span><Arrow /></a>
             </div>
           </div>
