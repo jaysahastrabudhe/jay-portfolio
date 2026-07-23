@@ -154,8 +154,29 @@ export default function App() {
           </div>
         </section>
 
+        <section className="workshop section-pad" id="workshop">
+          <p className="section-index">05 · Teaching & impact</p>
+          <div className="workshop-grid">
+            <a className="workshop-media" href="https://www.linkedin.com/feed/update/urn:li:activity:7426147112528297984/" target="_blank" rel="noreferrer" data-reveal>
+              <video src="/workshops/deasraa-workshop.mp4" poster="/workshops/deasraa-workshop.jpg" muted loop playsInline autoPlay preload="metadata" aria-label="DeAsraa women entrepreneurs digital marketing workshop recap" />
+              <span>Watch the workshop recap <Arrow /></span>
+            </a>
+            <div className="workshop-copy">
+              <span>deAsra Foundation · Women entrepreneurs</span>
+              <h2 data-reveal>Helping founders<br />advertise with <em>clarity.</em></h2>
+              <p data-reveal>Led a practical digital marketing workshop for budding women founders, turning paid advertising from a source of confusion and loss into a structured growth system.</p>
+              <ul>
+                <li>Reduce losses caused by ineffective ads</li>
+                <li>Recover and secure business advertising accounts</li>
+                <li>Build funnel-based advertising for growth</li>
+                <li>Develop customer personas and precise ad targeting</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
         <section className="products section-pad" id="products">
-          <p className="section-index section-index--light">05 · Development portfolio</p>
+          <p className="section-index section-index--light">06 · Development portfolio</p>
           <header className="products-head"><h2 data-reveal>Strategy that ships<br />as working <em>product.</em></h2><p data-reveal>I do more than plan the funnel. I design and build the interfaces, conversion paths and technical systems that make the growth idea real.</p></header>
           <div className="product-grid">
             {digitalProducts.map((product, index) => (
@@ -169,7 +190,7 @@ export default function App() {
         </section>
 
         <section className="recommendations section-pad" id="recommendations">
-          <p className="section-index section-index--light">06 · LinkedIn recommendations · All 4</p>
+          <p className="section-index section-index--light">07 · LinkedIn recommendations · All 4</p>
           <div className="recommendations-head"><h2 data-reveal>The work,<br />in their <em>words.</em></h2><a href="https://www.linkedin.com/in/jaysahastrabudhe/details/recommendations/?detailScreenTabIndex=0" target="_blank" rel="noreferrer">View all on LinkedIn <Arrow /></a></div>
           <div className="quote-grid">
             {recommendations.map((item, index) => (
