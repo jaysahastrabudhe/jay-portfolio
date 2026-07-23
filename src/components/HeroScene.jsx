@@ -9,7 +9,7 @@ export default function HeroScene() {
     <section className="hero-scene" ref={sceneRef} aria-labelledby="hero-title">
       <div className="hero-stage">
         <div className="hero-grid" aria-hidden="true" />
-        <p className="hero-meta hero-meta--top">Jay Sahastrabudhe · Mumbai, India</p>
+        <p className="hero-meta hero-meta--top">Jay Sahastrabudhe · Pune, India</p>
         <p className="hero-meta hero-meta--side">Strategy · Production · Systems</p>
 
         <div className="hero-word hero-word--rear" aria-hidden="true">GROWTH</div>
