@@ -42,15 +42,15 @@ const campaignProof = [
 
 const recommendations = [
   {
-    quote: 'Jay blends creativity with data-driven thinking and consistently delivers impactful results. He is proactive, detail-oriented, and dependable—guiding teams with clarity and confidence.',
+    quote: 'Jay has a rare ability to balance strategy with execution. He blends creativity with data-driven thinking and consistently delivers impactful results. Proactive, detail-oriented and dependable, he guides teams with clarity and confidence.',
     name: 'Sayli Chaudhari',
-    relation: 'Worked with Jay in digital marketing',
+    relation: 'LinkedIn recommendation',
     link: 'https://in.linkedin.com/in/sayli-chaudhari-48853576',
   },
   {
-    quote: 'Jay brings a combination of approachable energy and mature, strategic guidance. His insights helped us sharpen our approach and significantly elevate our performance across content, audience and growth.',
+    quote: 'Jay brings approachable energy together with mature guidance. His social media and YouTube expertise, mentorship and interpersonal skills helped us sharpen our approach and elevate our performance.',
     name: 'Archi Kashmiriya',
-    relation: 'Worked closely with Jay',
+    relation: 'LinkedIn recommendation',
     link: 'https://in.linkedin.com/in/archik-ux',
   },
 ]
@@ -247,9 +247,9 @@ export default function App() {
           </div>
           <div className="recommendations__grid">
             {recommendations.map((item, index) => (
-              <blockquote key={item.name} data-reveal>
+              <blockquote key={item.name}>
                 <span>0{index + 1}</span><p>“{item.quote}”</p>
-                <footer><div><strong>{item.name}</strong><small>{item.relation}</small></div><a href={item.link} target="_blank" rel="noreferrer" aria-label={`${item.name} on LinkedIn`}><Arrow /></a></footer>
+                <footer><div><strong>{item.name}</strong><small>{item.relation}</small></div><a href={item.link} target="_blank" rel="noreferrer" aria-label={`${item.name} on LinkedIn`} title="View LinkedIn profile"><span>in</span></a></footer>
               </blockquote>
             ))}
           </div>
