@@ -41,13 +41,13 @@ export default function App() {
     <>
       <header className="topbar">
         <a className="wordmark" href="#top"><span>JAY</span><span>SAHASTRABUDHE</span></a>
-        <span className="availability"><i /> Available for ambitious work</span>
+        <a className="availability" href="mailto:jaysahastrabudhe@gmail.com"><i /> Let’s talk</a>
         <button type="button" className="menu-button" onClick={() => setMenuOpen(value => !value)} aria-expanded={menuOpen}>{menuOpen ? 'Close' : 'Menu'} <b>{menuOpen ? '×' : '+'}</b></button>
       </header>
       <aside className={`menu-panel ${menuOpen ? 'is-open' : ''}`} aria-hidden={!menuOpen}>
         <nav>
           {navItems.map(([id, label], index) => <a href={`#${id}`} onClick={() => setMenuOpen(false)} key={id}><small>0{index + 1}</small><span>{label}</span><Arrow /></a>)}
-          <a href="#contact" onClick={() => setMenuOpen(false)}><small>07</small><span>Contact</span><Arrow /></a>
+          <a href="#contact" onClick={() => setMenuOpen(false)}><small>07</small><span>Let’s talk</span><Arrow /></a>
         </nav>
       </aside>
 
@@ -114,7 +114,7 @@ export default function App() {
                 <strong>{chapter.metric}</strong><small>{chapter.metricLabel}</small>
               </div>
               <div className="campaign-track">
-                {chapter.moments.map((moment, index) => (
+                {chapter.moments.slice(0, 2).map((moment, index) => (
                   <a href={moment.href} target="_blank" rel="noreferrer" className="campaign-moment" key={moment.title} data-reveal>
                     <figure><video src={moment.video} poster={moment.image} muted loop playsInline autoPlay preload="metadata" aria-label={`${moment.title} campaign video`} /></figure>
                     <div><span>{String(index + 1).padStart(2, '0')}</span><Arrow /></div>
@@ -173,22 +173,8 @@ export default function App() {
           </div>
         </section>
 
-        <section className="commercial section-pad">
-          <p className="section-index">05 · Commercial storytelling</p>
-          <div className="commercial-grid">
-            <article data-reveal>
-              <div className="commercial-mark" aria-hidden="true"><strong>15.4M+</strong><span>impressions</span></div>
-              <span>FullHouse · Awards submission</span><h3>Proof made persuasive.</h3><p>Krsnaa Diagnostics case-study narrative: 15.4M+ impressions, 9.9M+ views and ₹0.07 cost per view.</p>
-            </article>
-            <article data-reveal>
-              <div className="commercial-mark commercial-mark--alt" aria-hidden="true"><strong>Pitch</strong><span>strategy → story</span></div>
-              <span>FullHouse · Client pitch</span><h3>Complex thinking, made buyable.</h3><p>Strategic pitch development built to help decision-makers see the opportunity, the system and the next move.</p>
-            </article>
-          </div>
-        </section>
-
         <section className="products section-pad" id="products">
-          <p className="section-index section-index--light">06 · Development portfolio</p>
+          <p className="section-index section-index--light">05 · Development portfolio</p>
           <header className="products-head"><h2 data-reveal>Strategy that ships<br />as working <em>product.</em></h2><p data-reveal>I do more than plan the funnel. I design and build the interfaces, conversion paths and technical systems that make the growth idea real.</p></header>
           <div className="product-grid">
             {digitalProducts.map((product, index) => (
@@ -201,19 +187,9 @@ export default function App() {
           </div>
         </section>
 
-        <section className="capabilities section-pad">
-          <p className="section-index">07 · Capability model</p>
-          <h2 data-reveal>Think it. Make it.<br /><em>Measure it.</em></h2>
-          <div className="capability-grid">
-            <article><span>01</span><h3>Think</h3><p>Positioning, campaign strategy, acquisition and the commercial story.</p></article>
-            <article><span>02</span><h3>Make</h3><p>Shoots, edits, event execution, live content and pitch narratives.</p></article>
-            <article><span>03</span><h3>Build</h3><p>Web products, CRM workflows, automation, attribution and measurement.</p></article>
-          </div>
-        </section>
-
         <section className="recommendations section-pad" id="recommendations">
-          <p className="section-index section-index--light">08 · LinkedIn recommendations</p>
-          <h2 data-reveal>The work,<br />in their <em>words.</em></h2>
+          <p className="section-index section-index--light">06 · LinkedIn recommendations · All 2</p>
+          <div className="recommendations-head"><h2 data-reveal>The work,<br />in their <em>words.</em></h2><a href="https://www.linkedin.com/in/jaysahastrabudhe/details/recommendations/?detailScreenTabIndex=0" target="_blank" rel="noreferrer">View all on LinkedIn <Arrow /></a></div>
           <div className="quote-grid">
             {recommendations.map((item, index) => (
               <blockquote key={item.name} data-reveal>
@@ -225,8 +201,8 @@ export default function App() {
         </section>
 
         <footer className="contact section-pad" id="contact">
-          <p>Bring me the ambitious brief.</p>
-          <a href="mailto:jaysahastrabudhe@gmail.com">Let’s make it<br /><em>answer.</em> <Arrow /></a>
+          <p>Have an idea, a challenge or simply want to connect?</p>
+          <a href="mailto:jaysahastrabudhe@gmail.com">Let’s talk.<br /><em>Contact me.</em> <Arrow /></a>
           <div><span>Jay Sahastrabudhe © 2026</span><nav><a href="https://linkedin.com/in/jaysahastrabudhe" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://github.com/jaysahastrabudhe" target="_blank" rel="noreferrer">GitHub</a></nav><a href="#top">Back to top ↑</a></div>
         </footer>
       </main>

@@ -32,7 +32,7 @@ export default function HeroScene() {
           <p className="eyebrow">The positioning</p>
           <h2>Demand in front.<br /><em>Systems behind it.</em></h2>
           <p>I create the campaign, build the conversion path and make the result measurable.</p>
-          <div><a href="#campaigns">View selected work ↘</a><a href="mailto:jaysahastrabudhe@gmail.com">Start a project ↗</a></div>
+          <div><a href="mailto:jaysahastrabudhe@gmail.com">Contact me ↗</a><a href="#campaigns">View selected work ↘</a></div>
         </div>
 
         <div className="hero-teasers" aria-hidden="true">
