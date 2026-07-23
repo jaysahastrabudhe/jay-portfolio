@@ -114,7 +114,7 @@ export default function App() {
                 <strong>{chapter.metric}</strong><small>{chapter.metricLabel}</small>
               </div>
               <div className="campaign-track">
-                {chapter.moments.slice(0, 2).map((moment, index) => (
+                {chapter.moments.map((moment, index) => (
                   <a href={moment.href} target="_blank" rel="noreferrer" className="campaign-moment" key={moment.title} data-reveal>
                     <figure><video src={moment.video} poster={moment.image} muted loop playsInline autoPlay preload="metadata" aria-label={`${moment.title} campaign video`} /></figure>
                     <div><span>{String(index + 1).padStart(2, '0')}</span><Arrow /></div>
@@ -124,6 +124,10 @@ export default function App() {
               </div>
             </article>
           ))}
+          <div className="campaign-download section-pad">
+            <div><span>FullHouse India · Client pitch</span><h3>Strategy, structured<br />to be <em>buyable.</em></h3></div>
+            <a href="/downloads/jay-fullhouse-client-pitch.pdf" download="Jay-Sahastrabudhe-FullHouse-Client-Pitch.pdf"><span>Download the pitch · PDF</span><Arrow /></a>
+          </div>
         </section>
 
         <section className="nirva-study section-pad" id="nirva">
@@ -136,40 +140,14 @@ export default function App() {
             </div>
           </header>
 
-          <div className="nirva-hero" data-reveal>
-            <img src="/nirva/hero.png" alt="Nirva Health lifestyle care experience" loading="lazy" />
-            <div><span>Measured outcome</span><strong>+50%</strong><p>increase in site conversion</p></div>
-          </div>
-
-          <div className="nirva-system">
-            {[
-              ['01', 'Acquire', 'Published search-led articles and connected Meta ads with social content to build more efficient acquisition and reduce CAC.'],
-              ['02', 'Convert', 'Planned CRO activities across the site journey, translating audience intent into a 50% increase in conversion.'],
-              ['03', 'Retain', 'Improved the content experience to increase site retention, then developed ideas for LTV extensions beyond the first purchase.'],
-              ['04', 'Activate', 'Used a giveaway campaign as an attendance engine, increasing participation in Nirva’s health workshops.'],
-            ].map(([number, title, copy]) => (
-              <article key={title} data-reveal><span>{number}</span><h3>{title}</h3><p>{copy}</p></article>
-            ))}
-          </div>
-
-          <div className="nirva-editorial">
-            <figure data-reveal><img src="/nirva/method.png" alt="Nirva Health mobile care experience" loading="lazy" /></figure>
-            <div>
-              <p className="eyebrow">SEO publishing engine</p>
-              <h3 data-reveal>Useful health content built for discovery—and the next action.</h3>
-              <p data-reveal>Editorial planning focused on questions people were already searching for, while the site journey carried that attention toward Nirva’s consultations, subscriptions and workshops.</p>
-              <nav>
-                <a href="https://www.nirvahealth.com/blog/health-care-gap-lifestyle-prescription" target="_blank" rel="noreferrer">The healthcare gap <Arrow /></a>
-                <a href="https://www.nirvahealth.com/blog/guide-incorporate-healthy-habits-busy-work-life" target="_blank" rel="noreferrer">Healthy habits guide <Arrow /></a>
-                <a href="https://www.nirvahealth.com/blog/power-of-exercise-on-mental-health" target="_blank" rel="noreferrer">Exercise & mental health <Arrow /></a>
-              </nav>
+          <div className="nirva-brief" data-reveal>
+            <figure><img src="/nirva/hero.png" alt="Nirva Health lifestyle care experience" loading="lazy" /></figure>
+            <div className="nirva-brief__content">
+              <div><span>Primary markets</span><strong>US · UK</strong></div>
+              <p>Led growth work across the customer journey, increasing conversion and views through planned CRO activities.</p>
+              <p>Planned the international Apple Watch giveaway, including multi-site campaign listings designed to expand reach and workshop participation.</p>
+              <ul><li>Increased conversion</li><li>Increased views</li><li>CRO activities</li></ul>
             </div>
-          </div>
-
-          <div className="nirva-outcomes">
-            {[['+50%', 'site conversion'], ['Higher', 'site retention'], ['Lower', 'customer acquisition cost'], ['More', 'workshop attendance']].map(([value, label]) => (
-              <div key={label}><strong>{value}</strong><span>{label}</span></div>
-            ))}
           </div>
         </section>
 
@@ -203,6 +181,7 @@ export default function App() {
         <footer className="contact section-pad" id="contact">
           <p>Have an idea, a challenge or simply want to connect?</p>
           <a href="mailto:jaysahastrabudhe@gmail.com">Let’s talk.<br /><em>Contact me.</em> <Arrow /></a>
+          <a className="contact-email" href="mailto:jaysahastrabudhe@gmail.com">jaysahastrabudhe@gmail.com</a>
           <div><span>Jay Sahastrabudhe © 2026</span><nav><a href="https://linkedin.com/in/jaysahastrabudhe" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://github.com/jaysahastrabudhe" target="_blank" rel="noreferrer">GitHub</a></nav><a href="#top">Back to top ↑</a></div>
         </footer>
       </main>
